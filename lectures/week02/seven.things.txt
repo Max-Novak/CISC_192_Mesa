@@ -1,0 +1,48 @@
+The Seven Things a Computer can Do:
+INPUT
+OUTPUT
+STORE
+RECALL
+CALCULATE
+TEST
+JUMP
+
+INPUT
+Read in text or binary data
+Read in single characters, words, or lines
+Read in formatted characters, or voltages (square waves) from a network interface card
+Read in keyboard input or telemetry from a specialized input device like a seismograph.
+
+OUTPUT
+Print text to a physical screen, 
+Draw graphics using a graphics monitor
+Send characters to a printer
+Raise or lower voltages to a specialized device like a music board.
+
+STORE
+Store to main memory
+Store to non-volatile disk
+Punch a card or paper tape
+Write optical media
+Write to a USB device
+
+RECALL
+Recall from primary storage
+Recall from disk
+Read from specialized hardware
+
+CALCULATE
+Perform integer computation
+Simpulate a floating-point processor
+Utilize an installed FPU
+
+TEST
+Execute if(), while(), for(), or similar control structures
+Compare for equality or inequality using registers, or memory locations
+
+JUMP
+Perform an unconditional branch (goto, longjmp)
+Perform a computed branch like while(), for(), etc.
+Call and return from subroutines.
+Use a Stack to control the Instruction Pointer Register
+

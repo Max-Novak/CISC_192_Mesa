@@ -1,0 +1,6 @@
+
+There is a site on the web which will teach you how to build a true
+random number generator for your PC using the radioactive element
+and detector in a common smoke detector:
+
+http://etoan.com/random-number-generation/index.html

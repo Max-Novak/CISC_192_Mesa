@@ -1,0 +1,145 @@
+2.3 Constants
+
+Numbers can be written like:  3  or: 6, or you can SPECIFY HOW MANY
+BYTES THEY OCCUPY:  3L   or  6L for long ints, or cast as a different
+size: (char) 3 or (char 6.
+
+/*-----------------------------------------------------------------
+*	testlengt.cpp	-	specify hown many bytes a number occupies
+*	Fri Jun 21 10:30:37 PDT 2019 T.E.H.
+*  How do you feel about the proverb, "Neatness Counts"?
+-----------------------------------------------------------------*/
+#include <cstdio>
+#include <iostream>
+using namespace std ;
+
+int main ()
+{
+	cout << "(char) 3   is " << sizeof( (char) 3) << " bytes." << endl ; // 3 is 1
+	cout << "       3   is " << sizeof(3)         << " bytes." << endl ; // 3 is 4
+	cout << "       3   is " << sizeof(3L)        << " bytes." << endl ; // 3 is 4
+	cout << "       3LL is " << sizeof (3LL)      << " bytes." << endl ; // 3 is 8
+
+} // main ends
+
+We must be able to put numbers in our programs.  If we just type a series of
+digits, the compiler will make choices as to the type of the data based on how
+large the number's value is.
+
+If we need to control the type of such a "constant" value, we need to use suffixes.
+
+1234   int
+123456789L   long int
+1234U   unsigned int
+123456789UL   unsigned long int
+
+1.234   double
+1.234F   float
+1.234L   long double
+
+'c'   character
+
+Characters are numbers, and refer to the characters we use on the computer system.
+There are two major systems of characters:
+
+EBCDIC  (Electronic Binary Coded Decimal Interchange Code) used on IBM mainframes
+ASCII/Unicode (American Standard Code for Information Interchange Code) used on
+most other computers.  (Unicode is a two-byte expansion of ASCII).
+
+To keep things straight, the character '0' has a numeric value of 48.  So if
+we store a 48 in a byte, then print it in printf as "%c", we get '0'.
+The numeric value of a character has little relation to its meaning, except
+that '1' is one more than '0', and 'a' is three less than 'd'.  They can all
+be used in arithmetic in the C family, unlike weaker programming languages.
+
+We often use Base 10, but we also use Base 8 and Base 16.
+
+010   8, in Octal (Base 8)
+8      8, in Decimal (Base 10)
+0x8   8, in Hexadecimal, (Base 16)
+
+
+We can designate the number of the character with the backslash:
+
+'\000' is a NULL or string-terminator.
+'\007' is a BEL, which, if printed, rings the system alarm.
+
+Instead of having to remember the numbers, we can learn the "escape
+characters":
+
+\a   alert, BEL
+\b backspace BS
+\f formfeed FF
+\n end of line LF
+\r carriage return CR
+\t horizontal tab HT
+\v vertical tab VT
+\\ backslash
+\? question mark
+\' single quote
+\" double quote
+
+If you're interested:
+
+ASCII chart:
+Binary      Oct   Dec    Hex   Abbr  [a]  CTRL ESCAPE  Name
+000 0000    000     0    00    NUL    ␀    ^@    \0    Null character
+000 0001    001     1    01    SOH    ␁    ^A          Start of Header
+000 0010    002     2    02    STX    ␂    ^B          Start of Text
+000 0011    003     3    03    ETX    ␃    ^C          End of Text
+000 0100    004     4    04    EOT    ␄    ^D          End of Transmission
+000 0101    005     5    05    ENQ    ␅    ^E          Enquiry
+000 0110    006     6    06    ACK    ␆    ^F          Acknowledgment
+000 0111    007     7    07    BEL    ␇    ^G    \a    Bell
+000 1000    010     8    08     BS    ␈    ^H    \b    Backspace[d][e]
+000 1001    011     9    09     HT    ␉    ^I    \t    Horizontal Tab[f]
+000 1010    012    10    0A     LF    ␊    ^J    \n    Line feed
+000 1011    013    11    0B     VT    ␋    ^K    \v    Vertical Tab
+000 1100    014    12    0C     FF    ␌    ^L    \f    Form feed
+000 1101    015    13    0D     CR    ␍    ^M    \r    Carriage return[g]
+000 1110    016    14    0E     SO    ␎    ^N          Shift Out
+000 1111    017    15    0F     SI    ␏    ^O          Shift In
+001 0000    020    16    10    DLE    ␐    ^P          Data Link Escape
+001 0001    021    17    11    DC1    ␑    ^Q          Device Control 1 (oft. XON)
+001 0010    022    18    12    DC2    ␒    ^R          Device Control 2
+001 0011    023    19    13    DC3    ␓    ^S          Device Control 3 (oft. XOFF)
+001 0100    024    20    14    DC4    ␔    ^T          Device Control 4
+001 0101    025    21    15    NAK    ␕    ^U          Negative Acknowledgement
+001 0110    026    22    16    SYN    ␖    ^V          Synchronous idle
+001 0111    027    23    17    ETB    ␗    ^W          End of Transmission Block
+001 1000    030    24    18    CAN    ␘    ^X          Cancel
+001 1001    031    25    19     EM    ␙    ^Y          End of Medium
+001 1010    032    26    1A    SUB    ␚    ^Z          Substitute
+001 1011    033    27    1B    ESC    ␛    ^[    \e[h] Escape[i]
+001 1100    034    28    1C     FS    ␜    ^\          File Separator
+001 1101    035    29    1D     GS    ␝    ^]          Group Separator
+001 1110    036    30    1E     RS    ␞    ^^[j]       Record Separator
+001 1111    037    31    1F     US    ␟    ^_          Unit Separator
+111 1111    177   127    7F    DEL    ␡    ^?          Delete[k][e]
+
+
+C Strings:
+
+A string constant or string literal is a series of character constants between double quotes:
+
+char c[] = {"Heppy Birthday"} ;          /* array  style definition */
+
+char *m  = "Froeliche Weinachten" ;      /* pointer style definition */
+
+
+String constants MUST end in a NULL, to avoid errors
+printing them, so allocate enough space for the string
+data plus one.  If you let the compiler handle it, space
+for the null will be automatically provided, along with
+the trailing null.
+
+Enums:
+
+An enum is a series of names which are symbolic names for 0, 1, 2, etc.
+
+enum states { OFF, ON, FLYING, BURNING } ;  /* 0, 1, 2, 3 */
+
+But they can be modified to start elsewhere:
+
+enum months { JAN=1, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC } ; /* so DEC == 12 */
+

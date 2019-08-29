@@ -1,0 +1,326 @@
+WEEK02
+
+READING:   Chapter 1, re-read the programming parts.1
+
+Textbook:  Chapter 2,  Week02/files
+
+Log on to Canvas, and post a message in General Discussion.  Ask a
+question which you feel was confusing when you first came to it, then
+do your best to answer the question.  Think of your classmates, and make
+it a good question.
+
+EVERY DAY(or: how to attack each assignment):
+	Check the Class Syllabus/Schedule for any changes.
+	Read or reread the current chapter in the TEXT.
+	(Read each chapter a few times, it helps.)
+	Read every file in this week## directory.
+	Read the powerpoints and other files, if any.
+	Read any programs.  Copy them, compile, run, and understand them.
+	Re-read the asst.txt file in the current asst# assignment directory.
+	Work the assignment:
+		Design the solution.
+		Express it in terms of the "Seven Computer Tasks".
+		Work the solution with a pencil to confirm it is correct
+		In the program editor, enter the solution as //comments telling WHAT to do
+		Write C++ statements which translate each comment into HOW to do it.
+		Compile the program and fix syntax errors
+		Run the program and test the results, fix logic errors
+		Copy your *.cpp file into your asst# directory for collection
+		Test your work so you get it right the first time.
+
+	If you prefer to log into Buffy and work at the Linux command line, 
+	read SYSTEM.ACCESS.TXT in this directory.  It shows you how to
+	save PUTTY.EXE (in this directory) to your Windows
+	machine and run it to connect to Buffy.  Look at the "oryxnames" file
+	in the class' root directory to find your login name and the initial 
+	password the student accounts are set to. 
+
+If you're using a Macintosh command line, you don't need PUTTY.EXE,
+you can just type:
+
+ ssh -l oryx?? 209.129.16.61       (the ?? get replaced by your login number.)
+
+If you're at CALSTATE or UCSD, you already have a Unix account, and you can get to Buffy
+from that account's command line with the ssh -l command above.  ALL LINUX COMPUTERS
+can reach all other LINUX computers anywhere on Earth or low orbit.
+=========================================================================
+
+
+you can use
+	PUTTY.EXE from a Windows box 
+or 
+	ssh from a Unix computer.  
+
+Whichever you choose as your workbench, (or both if you like,) it's
+all there:
+OPTIONS if you want to work from home:
+	1.	Download CodeBlocks MINGW and install it on your Windows box.
+		find the download address in the textbook. (YOU find it.)
+	2. Download PUTTY.EXE and use Buffy over the net.
+		http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+	3. Install SuSE Linux with "all development tools" selected. OR:
+		https://software.opensuse.org/132/en
+	4. Install Cygwyn on your Windows box.
+		https://cygwin.com/install.html
+
+Everything changes. If the URLs have changed, do a web search.
+Programmers spend much of their time researching solutions.
+This is a class in problem solving.
+
+======================COURSE CONTENT===============================
+You probably already know:
+	Computers execute commands.
+	compiled programs are called PROGRAMS.
+	Commands are NUMBERS in the computer's MACHINE LANGUAGE.
+	Programs operate on DATA.
+	Data are also NUMBERS.
+
+ 	*	*	*	*	*	*
+
+	Computers are composed of Hardware.  The hardware runs a super program
+	called the Operating System which in turn runs Application Programs.
+	As a Novice Programmer, you'll be creating Application Programs in 
+	this course.
+
+	Computers can only do Seven Things:
+
+	//INPUT
+	//STORE 
+	//RECALL
+	//CALCULATE
+	//TEST
+	//JUMP
+	//OUTPUT
+
+(That is the whole course, by the way.  From here on, we'll just be expanding
+those Seven Things and how they work together.)
+
+Every computer program can be broken down into one or more of these seven tasks.
+
+You might like to Log into CANVAS now, and leave a message in
+the General Discussion area.  You may want to talk about yourself,
+why you're taking C++, what your computer experience is, your favorite
+games, what systems you've worked on, what foreign languages you speak,
+what parts of the world you'd like to visit, maybe work in. Hobbies,
+anything relevant to the profession or your career plans.  You have
+until the end of the first week to do this.
+
+Block 2: CHAPTER 2 "Data types and storing them in C++"
+
+READ CHAPTER 2
+
+Variables are names for places in the computer's memory. 
+
+Use names for variables that make sense:  Letters and digits and '_'.  
+Don't _start_ with a digit or '_'.
+Don't use language keywords like: if, else, int, for, use common sense.
+
+It should be descriptive, like: hoursWorked.  
+
+Basic Types:
+only true or false:
+	bool
+only whole numbers:
+	char
+	short
+	int
+	long
+	long long
+
+only positive: the above prefixed with "unsigned"  like: unsigned long unitsSold ;
+
+real numbers, whole and/or fractions:
+	float  // we never use floats since the 80s passed.
+	double
+	long double
+
+Variable Categories:
+
+1) single ("scalar") variables:
+Single chars, ints, doubles, whatevers.
+
+	int age ;
+	double acceleration ;
+
+2) arrays or other collections.
+A bunch of the same type, all with one name and an 'offset'.
+
+	int  total_hours , hours[4], long long units_per_hour [24] = {0} ;
+	double rate = 32.75 ;
+
+	total_hours =  hours[0] + hours[1] + hours [2] + hours{3} ;
+	grosspay = total_hours * rate ;
+
+DECLARE THE VARIABLE BEFORE TRYING TO USE IT, or the compiler will complain.
+
+---
+
+Braces { and } contain ("delimit")  blocks of code.
+
+#include <iostream> // preprocessor directives bring in source code files
+							//most programs need, so you don't have to re-type them.
+
+These files are often called "header files".  They're human-readable text.
+On Buffy, they're in /usr/include and you can read them with the command less (filename)
+
+If your program wants to communicate with the Outside World:
+
+#include <iostream>
+
+cout << "Hello, World\n!" ;   // write to the screen
+cin  >> user_name ;           // read the keyboard
+
+
+UNDERSTAND HIERARCHY OF OPERATIONS IN C/C++:
+
+()    what's inside parentheses happens first
+*  /  then multiplication and division
++ -   then addition and subtraction
+=     then assigning values to variables
+
+Classes of operation, in order of precedence
+"ARITHMETIC RELATIONAL ASSIGNMENT")
+
+Arithmetic order:
+
+[PARENTHESES]
+
+[MULTIPLY AND DIVIDE] 
+
+[ADD AND SUBTRACT]
+
+
+
+==========================================
+
+A VERY important item for your notes is the Order in Which Things Happen:
+
+(C Hierarchy of Execution)
+
+() []          left to right  "group indicators"
+!  ~  ++  --  +  -  *  &  (type)  sizeof right to left  "unary operators"
+*  /  %        left to right   "multiplication"
++  -           left to right   "addition"
+<<  >>         left to right   "bit shifting"
+<  <=  >  >=   left to right   "inequality comparisons"
+==    !=       left to right   "equality comparisons"
+&              left to right   "bitwise AND"
+^              left to right   "bitwise XOR"
+|              left to right   "bitwise OR"
+&&             left to right   "logical AND"
+||             left to right   "logical OR"
+?:             right to left   "conditional operator"
+=  +=  -=  *=  /=  %=  &=  ^=  |=  <<= >>=   right to  left "assignment ops"
+,           left to right   "comma"
+
+PRINTING FROM AND READING INTO VARIABLES:
+Read: iostream_one.txt in this directory.
+
+Data have TYPE.  We seeing integers, characters, Strings, and
+Boolean types (yesses and noes) in programs.  
+
+To save data (values) we use the right types of variables.
+
+Type specifies 
+	a) how you plan to use that data,
+	b) how many bytes the data occupies in memory.  
+
+WHAT A PROGRAM LOOKS LIKE:
+
+IOSTREAM 1
+
+The first time you look at a C++ program, you'll see:
+
+#include <iostream>
+
+This "include" preprocessor directive allows you to write code
+which uses the "iostream object".  This is a library of code
+you DO NOT want to have to re-invent (or even re-type) every
+time you write a program.  It allows you to read from
+the keyboard (cin) and write to the screen (cout).  Only C++
+has it, C uses simpler "library functions" from stdio.h:
+#include <stdio.h>
+
+To use iostream: #include <iostream>
+
+Generally, it is convenient to add:
+
+using namespace std;
+
+to the top of your code.  If you don't, then you must
+specify namespaces manually, such as: std::cout and
+std::endl, instead of just using the object name.
+
+Example:
+
+/*
+ * iostream1.cpp - demonstrate basic input-output to console
+ */
+
+#include <iostream>
+
+using namespace std;
+int main()
+{
+  int i ;
+  float f ;
+  char s[81] ;
+
+  cout << "Enter your age, weight, and name" << endl ;
+
+  cin >> s >> i >> f ;
+  cin.getline(s,80) ;	// I want all words of the name, not just the first.
+
+  cout << "your name: " << s << endl ;
+  cout << "your weight: " << f << endl ;
+  cout << "your age: " << i << endl ;
+
+  return 0 ;
+}
+
+------------------
+C++ also has:
+"Overloaded Objects"
+Don't worry about it, just add this to your notes for later.
+It means several functions can be named the same.
+This is a difference between C++ and C.
+------------------
+
+The cin stream object is "overloaded", which means it's smart, and it
+can see and adapt to the type of variable it's storing its input into.
+But there is really a separate cin module for each data type, all called
+by the same name.
+
+The cout and cin streams have METHODS which extend their capabilities:
+
+you can have this:
+
+
+char c ;
+
+cin >> c ; // cin knows c is a single byte, so it only stores the next 
+single char.
+
+If you want to write simpler and faster code, you can do the thinking
+for cin:
+
+char c ;
+
+c = cin.get() ;  // get is a METHOD of the object cin
+
+more:
+
+cout << c ;      // cout will figure it should print only one char
+
+cout.put(c) ;    // or you can tell it direclty using the put METHOD.
+
+                                // 80 chars, stop at ENTER.
+
+C++ lets you perform multiple operations:
+
+string first ; string last ;    // create two strings
+
+cout << "Enter first and last names separated by space:" ; // give instructions
+
+cin >> first >> last ;         // you should run this to confirm fname and lname's landing places.
+

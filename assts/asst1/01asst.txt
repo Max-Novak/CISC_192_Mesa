@@ -1,0 +1,237 @@
+Asst1: guessnum.cpp  50 points.
+
+Requirements: Text: Chapter 1 read all the Week1 files, read all the
+Week1/block01 files.
+
+This isn't programming yet, it's an exercise for you to get familiar with
+the tools of programming.
+
+Here's how to attack assignment 1:
+
+1. Read Chapter 1, decide if you want or need to install 
+Code::Blocks on your home machine.
+
+2. Whereever you do it, get Windows running.
+
+3. Insert your URL thumb drive so Windows recognizes it.
+
+4. Start Code::Blocks.
+
+5. Create a console based project GUESSNUM.
+
+6. Select "C++" as the application language.
+
+7. Click all the "OK"s. 
+
+8. Open the Editor, erase all the program code in main.cpp which the
+system wrote for you.
+
+9. Type the program code at the bottom of THIS file into
+the editor.  Make a few mistakes, so you'll see what error 
+messages look like.
+
+10. Once you have the whole program typed in, go to the top
+menu bar and click BUILD, then click BUILD on the drop-down
+menu.  HOPEFULLY there are some errors there.  Read the error
+messages in the error pane below the editor pane.  Compare your
+code with the listing below, and make corrections.  Ones and ells
+are particularly devious.
+
+11. Click Build -- Build again.  Keep Correcting and building
+until you stop getting errors.
+
+12. Click the green arrow in the menu bar, and Guessnum will run.
+Play the game as many times as you like, and come up with a plan 
+to win the game every time.
+
+	a. The secret number is between 0 and 1000.
+	b. You get ten tries.
+	c. Each try "cuts out" half of the remining possibilities.
+	by telling you "low" or "high".
+	d. The ability to divide by 2 is important.
+
+Turn in the assignment by mailing main.cpp to the instructor with
+message subject: "Asst1"
+
+Make sure your class alias (oryxNN) and your legal name, (First,Last)
+are legible in the message.
+
+================================================================
+BE SURE TO READ CAREFULLY.
+READ AS MANY TIMES AS YOU NEED TO.  GO SLOW AND TAKE YOUR TIME
+UNDERSTANDING THE INSTRUCTIONS.
+
+PROGRAMMING ASSIGNMENTS MAY BE TURNED IN SEVERAL DIFFERENT WAYS,
+AND THE MOST FAMILIAR IS TO MAIL ME THE SOURCE PROGRAM.
+
+================================================================
+
+
+When's it Due?: see Schedule.pdf
+
+(I'm gonna try to ensure you have your Saturdays free to do final
+cleanup.  But Sunday you should start the next  chapter.)
+
+This will not require you to make an original program, I did that for you.
+You just type it in and run it.  But NEVER STOP THINKING.  As you handle
+that code, read it closely, and use your common sense to make good
+guesses about what each statement does.
+
+What you should see in Code::Blocks:
+_________________________________________________________________________
+File Edit View Search Project Build Debug......
+
+(a bunch of icons on this line)
+
+a pane with 
+Management here
+  workspace
+  	guessnum
+  		source
+
+
+
+                                           (a big grey rectangle here)
+
+_________________________________________________________________________
+
+Greatest causes for trouble:  Often, students won't select "Console Ap"
+in Code::Blocks, and the Code Blocks IDE won't behave as is should.
+Always check yourself if you see something unexpected.  Code::Blocks
+is a really versatile tool, it's easy to set something incorrectly.
+
+But if Code::Blocks is OK, then look carefully at your program: the
+Error Message lists WHAT LINE is causing trouble, but very often
+it's the line BEFORE that one.  Usually a missing semicolon ; 
+
+
+
+
+Here's the code:
+
+/*-------------------------------------------------------------------
+*  guessnum.cpp   -  guess the number
+*  (Your Name)   (date)
+This is a real program.  Nothing's explained yet, just like a baby
+learning to repeat adult speech.  Relax into it.
+I tried to get all the SEVEN THINGS into this, so if you want, print it
+out and mark it up with your guesses as to which Thing each part of the
+program does.  Most right guesses gets bragging rights.
+-------------------------------------------------------------------*/
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std ;
+int main ()
+{
+   srand(time(NULL)) ;              // "seed" the randomizer
+   int limit = 1001 ;               // set a range limit
+   int secret = rand() % limit ;    // % is the "remainder" operator
+   int max_tries = 10 ;            
+   int guess ;
+   int trial = 0 ;                  
+
+   LOOPSTART:
+      trial = trial + 1 ;           // count this guess
+      if (trial > max_tries )
+      {
+         cout << "Too many guesses: you lose.\n" ;
+         return -1 ;
+      }
+      cout << "Guess: " ;
+      cin >> guess ;
+
+      // be nice to the user, give hints:
+      if (guess < secret)
+         cout << "Low\n"  ;
+      else
+      if (guess > secret)
+         cout << "High\n" ;
+      else
+         cout << "RIGHT!!\n" ;
+   if (guess != secret)
+      goto LOOPSTART ;               
+
+   cout << "Number of tries: " << trial << ". Press ENTER:" << endl ;
+   cin.get() ;
+   return 0 ;  // (0 is good)
+} // main (program ends here)
+
+====================================================
+
+Here's some example runs:
+
+====================================================
+Sample Run:
+Guess: 500
+High
+Guess: 250
+Low
+Guess: 375
+High
+Guess: 300
+Low
+Guess: 325
+High
+Guess: 312
+High
+Guess: 306
+High
+Guess: 303
+High
+Guess: 302
+High
+Guess: 301
+RIGHT!!
+Number of tries: 10
+
+Process returned 0 (0x0)   execution time : 42.983 s
+Press any key to continue.
+====================================================
+I have provided you with a.out and GUESSNUM.EXE, which are 
+example programs for Linux and Windows.  You may copy or download
+them from this disk directory to the appropriate platforms and
+run them to check how your code performs compared to them.
+====================================================
+
+Once your code is correct, get ready to upload it to Buffy for grading.
+
+Read "using_ftp", sooner or later you'll want to use it. 
+==============================
+Option 0: paste your source code into a mail message and send it to me.
+
+==============================
+Option 1: Old-fashioned code PSFTP.EXE for Windows.
+TRANSFERRING FILES TO AND FROM BUFFY USING PSFTP.EXE:
+
+	Read "using_ftp" and then use PSFTP.EXE to copy guessnum's
+	main.cpp to your asst1 directory on Buffy.
+
+	Wait until the transfer is complete, then type: quit
+
+==============================
+Option 2: New PSCP.EXE for Windows, just like scp under Unix.
+TRANSFERRING FILES TO AND FROM BUFFY USING PSCP.EXE:
+
+	Read "using_ftp" and then use PSCP.EXE to copy guessnum's main.cpp
+	to your asst1 directory on Buffy.
+
+==============================
+Option 3: 
+LOG IN USING PUTTY AND COPY/PASTE FROM YOUR LOCAL EDITOR (CODEBLOCKS) TO
+THE EDITOR ON BUFFY (nano).
+
+If you do the work in lab, or during the on-campus office-hours meetings,
+you won't have homework hanging over your head.  Also, you'll have a
+much better chance of passing.  In other words, this isn't a "hard"
+class, unless you make it so.  Procrastination will guarantee failure.
+DO IT NOW so you really remember what you've been shown.
+
+So take your time and do it.  Do it over and make notes until
+you're sure you can do it again later.  You'll find, doing a task
+right three times will generally set it in your memory for years.
+
+Hint: "base 2 logarithms" 
+
+

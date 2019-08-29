@@ -1,0 +1,42 @@
+Not required, but it's fun to figure out:
+
+Just figure out the procedural answer, don't bother working
+out the program or its code as yet.  I just want to be sure
+it's obvious enough that a 192 class wouldn't waste a lot of
+time working out the solution to the puzzle.
+
+Tenvelopes:
+
+You are handed 1000 one-dollar bills and 10 envelopes.
+
+Distribute all the one dollar bills among the 10 envelopes
+then seal them.  
+
+Now, for any number between 1 and 1000, you must be able to hand over
+that amount just by handing over the appropriate envelopes.
+You don't know what amounts you'll be asked for, so the envelopes
+must be filled with thought.
+
+Figure out how to allot the dollars among the envelopes so that you
+can disburse any sum between 1 and 1000 by handing over the appropriate
+envelopes.
+
+-----------------------------------------
+
+create an array:  int envelopes[10] = { ,  , 
+
+STUFF THE ARRAY'S ELEMENTS WITH THE APPROPRIATE NUMBERS OF BILLS.
+
+---(OK, you can stop here.)---
+
+Then prove that the allocation is correct by running a loop
+which askes in turn for each sum from 1 to 1000, listing the
+contents of the envelopes used to compose that sum.
+
+Sample lines from run: 
+
+11 :     8     2     1
+12 :     8     4
+13 :     8     4     1
+
+

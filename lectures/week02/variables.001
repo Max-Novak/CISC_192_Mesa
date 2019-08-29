@@ -1,0 +1,80 @@
+lab02.txt
+
+Programs do a lot of arithmetic.
+The arithmetic programs do is expressed in very simple
+and short operations, mostly.
+
+add: +
+subtract: -
+multiply: *
+divide: /
+find remainder: %
+
+exponentiation: no such operator.  
+	(we'll use a math library function later.)
+
+Examples:
+
+add 4 and 16, store the sum as x
+
+	int x = 4 + 16
+
+divide 22 by 7, save quotient as q
+
+	int q = 22 / 7
+	double good_quotient = 22.0 / 7.0 ;
+
+Examples which print the results, in C++ and C:
+
+	cout << 4 + 16 ;  printf("4 + 16 == %d\n", 4 + 16) ;
+	cout << 22 / 7 ;  printf("22 / 7 == %d\n", 22 / 7) ;
+	cout << 22 / 7 ;  printf("22 / 7 == %f\n", 22 / 7) ;
+
+NOTE: statments end in semicolons.
+
+To do real programming, we need to REMEMBER what we do.
+Programs remember using VARIABLES.  For now, let's just
+use whole numbers (ints).
+
+int x, y, z ;
+
+x = 4 ;
+y = 16 ;
+z = x + y ;  
+
+Variables let us keep intermediate results.
+
+int count = 0 ;
+
+Add values TO count:
+
+count = count + 4 ;
+
+count = count + 16 ;  // count is now 20
+
+count = count + 80 ; // count is now 100
+
+A shorter form of the above:
+
+int count = 0 ;
+
+count += 4 ;
+
+count += 16 ;
+
+count += 80 ;
+
+NEVER EXPECT THE SYSTEM TO ZERO YOUR VARIABLES WHEN YOU
+DECLARE (create) THEM: DO IT YOURSELF.
+
+	int count = 0 ;  // otherwise, count starts with junk already in it.
+
+Consider:
+	int count, ocount = 0  ; // (no initial zeroing of count)
+
+	cout << "Count is: " << count << endl ;
+	cout << "OCount is: " << ocount << endl ;
+
+prints:
+Count is: 134514747
+OCount is: 0

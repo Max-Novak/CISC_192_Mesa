@@ -1,0 +1,219 @@
+Which language is right for you?
+
+In order to help you make a competent, uncomplicated choice concerning
+the competition between complex, incompatible computer compilers we
+have composed this complete, compact, composite compendium comprising
+comparisons to compensate for the complaints and complements of their
+compromises. We hope you find it comprehensible rather than compost.
+
+
+C 
+You shoot yourself in the foot.
+
+C++ 
+You accidentally create a dozen instances of yourself and
+shoot them all in the foot. Providing emergency medical
+care is impossible since you can't tell which are bitwise
+copies and which are just pointing at others and saying,
+"That's me over there."
+
+FORTRAN 
+You shoot yourself in each toe, iteratively, until you run
+out of toes, then you read in the next foot and repeat. If
+you run out of bullets, you continue anyway because you
+have no exception handling ability.
+
+Cobol 
+USE HANDGUN.COLT(45), AIM AT LEG.FOOT, 
+	THEN WITH ARM.HAND.FINGER ON HANDGUN.COLT(TRIGGER) 
+		PERFORM SQUEEZE. 
+RETURN HANDGUN.COLT(45)
+	TO HIP.HOLSTER.
+
+LISP (Recursively)
+You shoot yourself in the appendage which holds the gun with which
+you shoot yourself in the appendage which holds the gun with which
+you shoot yourself in the appendage which holds the gun with which
+you shoot yourself in the appendage which holds the gun with which you
+shoot yourself in the appendage which holds the gun with which you shoot
+yourself in the appendage which holds...
+
+Basic (interpreted) 
+You shoot yourself in the foot with a water pistol until
+your foot is waterlogged and rots off.
+
+Basic (compiled) 
+You shoot yourself in the foot with a BB using a SCUD
+missile launcher.
+
+FORTH Foot in yourself shoot.
+
+APL 
+You shoot yourself in the foot, then spend all day figuring
+out how to do it in fewer characters.
+
+Pascal 
+The compiler won't let you shoot yourself in the foot.
+
+SNOBOL 
+If you succeed, shoot yourself in the left foot. 
+If you fail, shoot yourself in the right foot.
+
+Concurrent Euclid 
+You shoot yourself in somebody else's foot.
+
+HyperTalk 
+Put the first bullet of the gun into the foot left of leg of
+you. 
+Answer the result.
+
+Motif 
+You spend days writing a UIL description of your foot, the
+trajectory, the bullet, and the intricate scrollwork on the ivory
+handles of the gun. When you finally get around to pulling the trigger,
+the gun jams.
+
+Unix
+
+% ls foot.c foot.h foot.o toe.c toe.o 
+% rm * .o rm: .o: 
+	No such file or directory 
+% ls 
+%
+
+XBase 
+Shooting yourself is no problem. If you want to shoot
+yourself in the foot, you'll have to use Clipper.
+
+Paradox 
+Not only can you shoot yourself in the foot, your users can, too.
+
+Revelation 
+You'll be able to shoot yourself in the foot just as soon
+as you figure out what all these bullets are for.
+
+Visual Basic 
+You'll really only appear to have shot yourself in the
+foot, but you'll have had so much fun doing it that you
+won't care.
+
+Prolog 
+You tell your program that you want to be shot in the
+foot. 
+The program figures out how to do it, but the syntax
+doesn't permit it to explain it to you.
+
+370 JCL 
+You send your foot down to MIS and include a 400-page
+document explaining exactly how you want it to be
+shot. 
+Three years later, your foot comes back deep-fried.
+
+Apple 
+We'll let you shoot yourself, but it'll cost you a bundle.
+
+IBM 
+You insert a clip into the gun, wait half an hour, and it
+goes off in random directions. 
+If a bullet hits your foot, you're lucky.
+
+Microsoft 
+Object "Foot" will be included in the next release. You
+can upgrade for $500.
+
+Cray 
+I knew you were going to shoot yourself in the foot.
+
+Hewlett-Packard 
+You can use this machine-gun to shoot yourself in the foot,
+but the firing pin is broken.
+
+NeXT 
+We don't sell guns anymore, just ammunition.
+
+Sun 
+Just as soon as Solaris gets here, you can shoot yourself
+anywhere you want.
+
+Ada 
+After correctly packing your foot, you attempt to
+concurrently load the gun, pull the trigger, scream, and
+shoot yourself in the foot. 
+When you try, however, you discover you can't because your
+foot is of the wrong type.
+
+Access 
+You try to point the gun at your foot, but it shoots holes
+in all your Borland distribution diskettes instead.
+
+Assembler 
+You try to shoot yourself in the foot, only to discover
+you must first invent the gun, the bullet, the trigger,
+and your foot.
+
+Modula2 
+After realizing that you can't actually accomplish anything
+in this language, you shoot yourself in the head.
+
+csh 
+After searching the manual until your foot falls asleep,
+you shoot the computer and switch to C.
+
+dBase 
+You buy a gun. Bullets are only available from another
+company and are promised to work so you buy them. Then you
+find out that the next version of the gun is the one that
+is scheduled to actually shoot bullets.
+
+PL/1 
+After consuming all system resources including bullets,
+the data processing department doubles its size, acquires
+2 new mainframes and drops the original on your foot.
+
+Smalltalk, Actor, et al 
+After playing with the graphics for 3 weeks, the
+programming manager shoots you in the head.
+
+HTML 
+<a target="http://body/lower-half/leg/foot.appendage">Shoot here</a>
+
+Java 
+The gun fires just fine, but your foot can't figure out
+what the bullets are and ignores them.
+
+MOO 
+You ask a wizard for a pair of hands. After lovingly
+handcrafting the gun and each bullet, you tell everyone
+that you've shot yourself in the foot.
+
+Smalltalk 
+You daydream repeatedly about shooting yourself in
+the foot.
+
+Perl 
+You shoot yourself in the foot, but can't figure out how
+you did it so you find a dozen new ways to do it.
+
+Python 
+You shoot yourself in the foot and everything goes so
+smoothly that you go ahead to to shoot yourself in the
+other foot then your legs, then your torso and then your
+head. Problem solved.
+
+Occam 
+You shoot yourself in both feet at the same time with the
+same pull of the trigger. You have no idea how it happened,
+but it did.
+
+Pick Basic (addition by Carolyn Righeimer) 
+You create a Body file, with a Foot attribute that has
+five Toe subvalues. 
+You neatly and easily shoot yourself in the foot. 
+You later discover that you only removed the big toe and
+the other toes have moved over to take its place.
+
+ASP (addition by Rodney Benker) 
+You may load the gun and pull the trigger, but the bullet
+will only hit your foot if you use Internet Explorer.
+
+

@@ -1,0 +1,119 @@
+A slash-star starts a block comment,
+/*-------------------------------------------------------------------
+*  guessnum.cpp   -  guess the number
+
+PROJECT:
+  1. start CodeBlocks and type in this program.  Make some mistakes.
+  2. get the program running
+  3. figure out a winning stragegy and win several times to prove it.
+-------------------------------------------------------------------*/
+a start-slash ends a block comment.
+
+#include <cstdlib>    #includes read in "header files which contain
+#include <iostream>   declarations, inititializations, stuff which
+#include <ctime>      many programs need, so it's not worth re-writing 
+                      so we just copy thtm.
+using namespace std ;
+the using command allows us to say:" 
+
+         cout << "Too many guesses: you lose." << endl;
+
+INSTEAD of having to say:
+
+         std::coud << "Too many guesses: you lose." << std::endl ;
+
+Anything the compiler doesn't recognize, it prepends std:: and looks again.
+
+
+Programs are build from functions.  Every program must have
+one function name main() which, when it ends, returns an integer to
+the calling process.
+
+int main ()
+{
+   srand(time(NULL))           ;             
+
+It is not possible to get a random number from a computer.
+Computers are DETERMINISTIC devices.  For our games and similar uses
+we're happy enough with "Pseudo Random Numbers".  srand() gives
+the Pseuco Random Number Generator a different starting point.
+To "seed" srand, we can call time(0): that returns the two-digit
+"seconds" field on the computer's clock.  So time(0), while it's
+not random, it does make the program choose between 60 different
+pseudo-random streams of numbers.
+
+
+To store and manipulate numbers, we need to define (allocate and
+claim) VARIABLES.
+
+   int limit = 1001            ;    // 0 <= secret <= 1000 
+   int secret = rand() % limit ;    // % is the "remainder" operator
+
+rand() produces a pseudo-randolm number.  What's the possible range?
+Don't ask me, write a test program and print what rand() gives you.
+Use a loop that runs 100 times, and consider how random they look.
+
+WE take a number, and "mod" it by the number in limit.
+
+In other words, if rand() returns 340098, we divide it by 10001,
+then we throw away the quotient, and keep the remainder, which
+must be between 0 and 1000.  (Think it over.)
+
+   int max_tries = 10          ;    // max tries
+   int guess                   ;    // input buffer
+   int trial = 0               ;    // count the guesses here
+
+   LOOPSTART:
+
+A label ending in a colon is a target that a "goto" can jump to.
+Lots of theorists HATE goto.  A goto is like a tourniquet: you
+don't need one often, but when you do, you need it quickly, and
+you need it badly.  There are no "forbidden" techniques to any
+real professional.  Writing unnecessary rules for others is 
+unworthy of a enlightened adult.  (If you doubt, read Bruce Lee.)
+
+      trial = trial + 1 ;           // count each try
+Experienced C programmers would probably use: trial++ ;
+
+      if (trial > max_tries )
+All if tests must be contained within parenthesis.
+NOTE: the "if()" part does NOT end in an apostrophie,
+because it's not a "complete statement".
+
+      {
+         cout << "Too many guesses: you lose." << endl;
+				<< "Secret number WAS: " << secret << endl ;;
+         return -1 ;                // -1 is failure
+      }
+
+We use curly braces to contain several statements so we only
+need one "if" to control them.
+
+      cout << "Guess: "        ;    //display directions
+      cin  >> guess            ;    //read and store keyboard input
+
+      if (guess < secret)           // give a hint:
+         cout << "Low\n"       ;
+      else
+      if (guess > secret)
+         cout << "High\n"      ;
+      else
+         cout << "RIGHT!!\n"   ;
+
+   if (guess != secret)
+      goto LOOPSTART           ;    // yes, we have goto
+
+	Modern programmers would put all the above lines in a while() {}
+	loop, but I wanted you to see goto, since most books are afraid
+	to mention it.
+
+	Since the goto turns us back if we're still in the game, these
+	lines only execute after we either win or lose.:
+
+   cout << "Number of tries: " << trial << endl ;
+   cin.get() ;
+	As a courtesy, we hold the screen as it is after the game 
+	completes.  Otherwise, the user couldn't read the ending text.
+
+   return 0 ;  // (0 is success)
+}

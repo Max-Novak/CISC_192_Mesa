@@ -1,0 +1,36 @@
+
+Read the textfiles in the order their names list them.
+(In this assignment there are only 2 textfiles:
+
+	00README.FIRST
+	01asst.txt
+
+and two executable binaries:
+
+	GUESSNUM.EXE
+	guessnum.aout
+
+Read the text files in the order they're displayed.
+The other two file are Runnable Programs.
+If it's in CAPITALS and ends in .EXE, it
+will run on Windows.  If you're looking 
+with a browser, just click and drag
+
+GUESSNUM.EXE to your desktop, and you can
+run it.  It shows how asst1 should be written.
+If your assignment runs just like that, 
+you've completed it correctly.
+
+The other one: guessnum.aout  , is a
+runable for Linux.  If you're logging into
+Buffy, you can copy it to your asst1 directory:
+
+cd <enter> // now you're home
+
+cd asst1   // now you're in your asst1 directory
+
+cp ~hhaller/data/cisc192/asst2/guessnum.aout . 
+	// now a copy of the file is where you are.
+	// to run it, just type its name.
+
+

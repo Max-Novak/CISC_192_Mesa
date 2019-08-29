@@ -1,0 +1,358 @@
+Block 2: 
+
+Today we learn the simplest way to hand in assignments:
+
+1. Open CodeBlocks on your local machine, complete, compile, and test
+a program.
+
+2. Save that project on your local system and know where main.cpp was saved.
+Leave CodeBlocks open.
+
+3. Using the instructions in "Logging onto Buffy" and the "Putty.exe"
+documents, write down your login from the maxnames (online) or oryxnames
+(on campus) files.  Copy your starting password from the file.  Download,
+configure, and run PUTTY.EXE.
+
+4. Log into Buffy
+
+5. Cd to the Asst1 directory.
+
+6. Start nano main.cpp.
+
+7. LOCALLY, left-click and drag to highlight all the program code
+you've been working with.  In your browser, click Edit -> Copy.
+
+8. Click on the PUTTY window, in the nano editor.
+
+9  Press the RIGHT key of your mouse, and the program should be
+pasted into the nano editor.
+
+10. Save and exit nano with Ctrl-X  y  <RETURN>
+
+11. Compile the program on Buffy with:
+	g++ main.cpp
+
+12. If there are error messages, you probably included some
+Microsoft junk.  Edit the file with nano and fix it.  Repeat
+until you get a clean compile.  The g++ compiler will produce
+an a.out file.
+
+13 execute your program on Buffy by typing:
+
+a.out
+
+With the correct *.cpp file in the correct ASST? directory,
+the assignment has been submitted, and will be collected when
+the the collection script runs. 
+
+Do this with subsequent assignment's source code files.
+
+JUST upload the *.cpp file.  Not the *.cbp (project) file.
+
+----
+
+READ CHAPTER 2 
+
+Variables are names for places in the computer's memory.
+
+They come in different types and sizes: 
+	counting numbers (ints)  (both signed and unsigned)
+	measuring numbers (double)  
+	text characters (char)
+	strings of text (string) 
+	true/false data (boolean)
+	collections (arrays) of each of the above,
+	pointers (addresses) of each of the above.
+
+When assigning names, TRY to be KIND to whoever takes over your systems:
+"day" "month" and "year" are lots kinder than, say, "a" "b" and "c".
+Use names that make sense.
+
+Acceptable Variable Names: Letters and digits and '_'.  (DON'T start
+with a digit or '_', they are used by the LINKER, and if you confuse it,
+you will pay with hours of headache.)
+
+Don't put spaces in file or directory names, it brands you as a Microsoft
+noob.  (Microsoft's mission is to remove most of the power of computers so
+any ignoramus can use them.  It's too high a price.)
+
+Basic Types:
+bool
+	only holds true or false.
+
+char
+short
+int
+long
+long long
+	holds whole numbers.
+
+float
+double
+long double
+	holds real numbers.
+
+Variable Categories:
+
+1) single ("scalar") variables:
+Single chars, ints, doubles, whatevers.
+
+int age ;
+double acceleration ;
+
+2) arrays or other collections.
+A bunch of the same type THAT THE USER RELATES TO EACH OTHER, all with
+one name and an 'offset' or 'subscript'.
+
+int  hours[4], rate[4] = { 1.15, 4.00, 17.75, 45.60 } ; 
+
+grosspay = hours[0] * rate[0] ;
+grosspay = grosspay + hours[1] * rate[1] ;
+grosspay = grosspay + hours[2] * rate[2] ;
+grosspay = grosspay + hours[3] * rate[3] ;
+
+string monthnames[] = {"january", "february"} ;
+
+Most of the time we just use chars and ints.
+That is what the computer hardware manipulates fastest.
+
+DECLARE THE VARIABLE BEFORE TRYING TO USE IT.
+(Pard'ner, build a fence around the place you plan on keeping
+your herd of cows, or you'll be unable to keep them.)
+
+If you're going to use a variable as a counter or any kind
+of accumulator, FIRST ZERO IT OUT.  Standard C++ doesn't do anything
+unless it's told.
+
+char c = ' ' ; // initialize to blank
+
+int i = 0 ;    // initialize to zero
+
+
+Braces { and } contain ("delimits": great word) blocks of code.
+They make a bunch of lines into a single logical compound statement.
+
+#include <iostream>                    // preprocessor directives bring in
+source code files which most programs need.
+
+These files are often called "header files".  They're
+human-readable text. (Test question alert!)
+
+Those "angle brackets" mean: "round up the usual suspects from the
+usual place." https://www.youtube.com/watch?v=5kiNJcDG4E0
+
+I call that the "<asablanca <onvention" for obvious reasons:
+it 'rounds up the usual suspects at the usual place'.
+
+--
+
+If you want to communicate with the Outside World:
+
+cout << "Hello, World\n!" ;   // write to the screen
+cin  >> user_name ;           // read the keyboard
+
+Input (cin) and output (cout) are the program's way of communicating.  
+EVERY PROGRAM STARTS UP WITH COMMUNICATION ENABLED:	
+We refer to "streams". Each program has:
+(C++):
+cin   the keyboard
+cout	the monitor screen
+cerr	the monitor screen
+
+(C):
+stdin	the keyboard
+stdout the monitor screen
+stderr the monitor screen
+
+You can read files by "redirecting the keyboard"
+
+programname < filetoread
+
+When you just start the program, cin is the keyboard,
+cout is the monitor
+
+a.out < some_input_file  when you start a program with an
+'< file' rider, the program will read that file, and THINK
+it's reading the keyboard
+
+a.out > tuesday.output.file  when you start a program with
+an '> file' rider, the program will write to that file,
+creating it if necessary, and THINK it's writing to the
+monitor.
+
+a.out >> old.file  this ADDS TO and existing file instead
+of overwriting it.  If need be, the file is created.
+
+UNDERSTAND HIERARCHY OF OPERATIONS IN C/C++:
+
+()    what's inside parentheses happens first
+*  /  then multiplication and division
++ -   then addition and subtraction
+=     then assigning values to variables
+
+"ARITHMETIC RELATIONAL ASSIGNMENT")
+
+Arithmetic order:
+
+[PARENTHESES]
+
+[MULTIPLY AND DIVIDE] 
+
+[ADD AND SUBTRACT]
+
+Relational order:
+[ x < y  or x != 0]
+
+Assignment order:
+
+char c = (something) ;
+
+==========================================
+
+A VERY important item for your notes is the Order in Which Things Happen:
+You won't be familiar with most of this yet, but give it time.
+
+(C Hierarchy of Execution)
+
+() []          left to right  "group indicators"
+!  ~  ++  --  +  -  *  &  (type)  sizeof right to left  "unary operators"
+*  /  %        left to right   "multiplication"
++  -           left to right   "addition"
+<<  >>         left to right   "bit shifting"
+<  <=  >  >=   left to right   "inequality comparisons"
+==    !=       left to right   "equality comparisons"
+&              left to right   "bitwise AND"
+^              left to right   "bitwise XOR"
+|              left to right   "bitwise OR"
+&&             left to right   "logical AND"
+||             left to right   "logical OR"
+?:             right to left   "conditional operator"
+=  +=  -=  *=  /=  %=  &=  ^=  |=  <<= >>=   right to  left "assignment ops"
+,           left to right   "comma"
+
+PRINTING FROM AND READING INTO VARIABLES:
+Read: <A HREF="http://209.129.16.61/~hhaller/data/cisc192/block02/iostream_one">iostream_one</A> 
+
+Variables have TYPE.  We're seeing integers, characters, CStrings, and
+Boolean types in this chapter.  
+
+Knowing the type tells us:
+	a) how we plan to use that data,
+	b) how many bytes the data occupies in memory.  
+
+Read all of Chapter 2.
+
+=================================
+
+Long term storage (Disk).
+
+Variables only exist (in memory) when the program is running.
+
+Disks have an organization.  Windows disks are patterned
+after the more powerful Unix disks.  They both are
+"upside-down trees" ("root" on the top line).
+
+Win has a hard drive named C:
+
+Win may have a maximum of 4 physical hard drives. But
+each hard drive may have 4 Primary Partitions.  One of the
+Primary Partitions may be a "logical" partition which can
+be further divided.
+
+One Primary Partition should be a "Swap" partition
+to provide Virtual Memory to the system. (Virtual Memory: Disk
+impersonating RAM).  The machine "swaps out" data to free
+up memory when it needs more.
+
+If it has floppy drives, they are A: and B:
+
+Other devices like Flash Drives are mounted as E: F: and so on, and
+some disks "on the network" are X: Y: and Z:
+
+To "move to" or "change to" a drive, type its name and hit ENTER:
+
+A: <return>
+
+To "move to" another directory, type CD and its name.  (change directory)
+
+On a disk, you have a "tree" of daughter directories.  Directories
+organize the files.
+
+C:
+	\bin
+		\utils
+	\User
+		\s303
+			\Documents
+			\Music
+	\Programs
+	\Win32
+
+In Windows, the directory and file names are separated by the
+BACKslash (\) character.
+
+You can "go directly" to a place with a longer command:
+
+cd \User\hhaller\downloads\blueprints\x15
+
+OR: you can access a file without "changing to" that directory:
+
+winword.exe c:\text\school\auditing\term_papers\report02.docx
+
+--------------
+UNIX FILE SYSTEM:
+
+The Windows system is still primitive.  The Unix system is the 
+real thing:
+
+Volumes don't have names, all mounted disks are under the single
+"root" whose name is: /
+
+You may use "tree" to get a tree-oriented view of a disk or a
+subtree:
+
+tree ~/data/cisc192
+
+/var2/home/hhaller/data/cisc192
+├── -00NODELETE
+├── 192.oncampus.graded.assts -> /var2/home/thu/192.oncampus
+├── 192.online.graded.assts -> /var2/home/maxc/192.online
+├── asst0 -> ../assts/asst0
+├── block00
+│   ├── a.out
+│   ├── block00.txt
+│   ├── cae1.cpp
+│   ├── cae1.cpp.orig
+│   ├── guessnum.cpp
+│   ├── logging_into_buffy.txt
+│   ├── software_development_under_codeblocks
+│   ├── software_development_under_unix
+│   ├── software_development_under_Visual_Studio.txt
+│   ├── system_access
+│   ├── system_access.ppt
+│   └── using_ftp
+├── block01
+│   ├── block01.txt
+│   ├── first.unix.discussion.txt
+│   ├── hacker_culture.01
+│   ├── software_development_under_codeblocks
+│   ├── software_development_under_unix
+│   ├── system_access
+│   ├── system_access.ppt
+│   ├── tools.pptx
+│   └── using_ftp
+├── computer.movies
+
+When you run a command that generates a lot of lines, pipe the
+output into less so it doesn't scroll off the top of the screen:
+
+tree | less
+
+Disks may be mounted or umounted using the mount and umount commands.
+A disk may be mounted on one system even though it's connected
+to another one.  NFS (Network File System) makes this work.
+
+For an overview of unix, look at the unix.lecflow.txt file in the
+CISC192 homepage.  It is the lesson plan for my CISC 151 (Unix O/S)
+class.
+
