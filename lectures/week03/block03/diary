@@ -1,0 +1,78 @@
+KEEP A DIARY of every thing you learn so you don't have to go back
+and re-learn it.  (Unless you'd rather dig and search than take
+simple notes, of course....)
+
+
+
+/*-----------------------------------------------------------------
+*	intputchar.cpp	-	the "waterpump"
+Wed Jan 16 13:46:46 PST 2013 T.
+-----------------------------------------------------------------*/
+#include <cstdio>
+#include <cctype>
+#include <iostream>
+#include <iomanip>
+
+using namespace std ;
+
+int main (int argc, char *argv[], char **env)
+{
+	int c ;
+	c = cin.get() ;
+	while (!cin.eof())
+	{
+		cout.put(c) ;
+		c = cin.get() ;
+	}
+}
+
+
+/*-----------------------------------------------------------------
+*	intputword.cpp	-	the WORD "waterpump"
+*  effect: it strains out the newlines.
+Wed Jan 16 13:46:36 PST 2013 T
+-----------------------------------------------------------------*/
+#include <cstdio>
+#include <cctype>
+#include <iostream>
+#include <iomanip>
+
+using namespace std ;
+
+int main (int argc, char *argv[], char **env)
+{
+	string c ;
+	cin >> c ;
+	while (!cin.eof())
+	{
+		cout << c ;
+		cin >> c ;
+	}
+}
+
+
+/*-----------------------------------------------------------------
+*	intputlines.cpp	-	the LINES "waterpump"
+*  effect: it strains out the newlines.
+Wed Jan 16 13:50:21 PST 2013 T.
+-----------------------------------------------------------------*/
+#include <cstdio>
+#include <cctype>
+#include <iostream>
+#include <iomanip>
+
+using namespace std ;
+
+int main (int argc, char *argv[], char **env)
+{
+	char c[1024] ;
+	cin.getline(c, sizeof(c)-1) ;
+	while (!cin.eof())
+	{
+		cout << c << endl ;
+		cin.getline(c, sizeof(c)-1) ;
+	}
+}
+
+
+

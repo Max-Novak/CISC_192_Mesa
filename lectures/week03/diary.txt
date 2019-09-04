@@ -1,0 +1,273 @@
+KEEP A DIARY of every thing you learn so you don't have to go back
+and re-learn it.  (Unless you'd rather dig and search than take
+simple notes, of course....)
+
+
+
+/*-----------------------------------------------------------------
+*	intputchar.cpp	-	the "waterpump"
+Wed Jan 16 13:46:46 PST 2013 T.
+-----------------------------------------------------------------*/
+#include <cstdio>
+#include <cctype>
+#include <iostream>
+#include <iomanip>
+
+using namespace std ;
+
+int main (int argc, char *argv[], char **env)
+{
+	int c ;
+	c = cin.get() ;
+	while (!cin.eof())
+	{
+		cout.put(c) ;
+		c = cin.get() ;
+	}
+}
+
+
+/*-----------------------------------------------------------------
+*	intputword.cpp	-	the WORD "waterpump"
+*  effect: it strains out the newlines.
+Wed Jan 16 13:46:36 PST 2013 T
+-----------------------------------------------------------------*/
+#include <cstdio>
+#include <cctype>
+#include <iostream>
+#include <iomanip>
+
+using namespace std ;
+
+int main (int argc, char *argv[], char **env)
+{
+	string c ;
+	cin >> c ;
+	while (!cin.eof())
+	{
+		cout << c ;
+		cin >> c ;
+	}
+}
+
+
+/*-----------------------------------------------------------------
+*	intputlines.cpp	-	the LINES "waterpump"
+*  effect: it strains out the newlines.
+Wed Jan 16 13:50:21 PST 2013 T.
+-----------------------------------------------------------------*/
+#include <cstdio>
+#include <cctype>
+#include <iostream>
+#include <iomanip>
+
+using namespace std ;
+
+int main (int argc, char *argv[], char **env)
+{
+	char c[1024] ;
+	cin.getline(c, sizeof(c)-1) ;
+	while (!cin.eof())
+	{
+		cout << c << endl ;
+		cin.getline(c, sizeof(c)-1) ;
+	}
+}
+
+Most modern "big" programs bought by naive organizations is made in the
+third world.   An example of this is: no matter where you are in Canvas,
+it's nearly always impossible to jump back a page with the BKSP or
+LeftArrow icon or key.  No "breadcrumb" programming, yet that is a bare
+minimum for American programmers.  Too many managers are only interested
+in getting more for less, and they're so irrational they don't notice
+they only get less for less.  (Economics.)
+
+In our time, there is a whole discipline of interface design, and many
+proverbs about how to avoid driving the User crazy.  This is progress.
+
+But both Blackboard and Canvas haven't benefitted from any of it.  Drat.
+
+That is coming up, when we begin to include code which reads and uses
+the Command Line Arguments.
+
+
+it's entirely permitted to do this:
+string fname, mname, lname, zip ;
+unsigned int age ;
+
+cin >> fname >> mname >> lname >> age >> zip ;
+
+for more, click CMD on your windows machine, then click in the "dos box" window, and 
+type HELP <enter:  this gives a pretty exhaustive list of DOS commands.  They all
+work in a Windows Dos pane.
+
+
+help
+For more information on a specific command, type HELP command-name
+ASSOC          Displays or modifies file extension associations.
+ATTRIB         Displays or changes file attributes.
+BREAK          Sets or clears extended CTRL+C checking.
+BCDEDIT        Sets properties in boot database to control boot loading.
+CACLS          Displays or modifies access control lists (ACLs) of files.
+CALL           Calls one batch program from another.
+CD             Displays the name of or changes the current directory.
+CHCP           Displays or sets the active code page number.
+CHDIR          Displays the name of or changes the current directory.
+CHKDSK         Checks a disk and displays a status report.
+CHKNTFS        Displays or modifies the checking of disk at boot time.
+CLS            Clears the screen.
+CMD            Starts a new instance of the Windows command interpreter.
+COLOR          Sets the default console foreground and background colors.
+COMP           Compares the contents of two files or sets of files.
+COMPACT        Displays or alters the compression of files on NTFS partitions.
+CONVERT        Converts FAT volumes to NTFS.  You cannot convert the
+               current drive.
+COPY           Copies one or more files to another location.
+DATE           Displays or sets the date.
+DEL            Deletes one or more files.
+DIR            Displays a list of files and subdirectories in a directory.
+DISKCOMP       Compares the contents of two floppy disks.
+DISKCOPY       Copies the contents of one floppy disk to another.
+DISKPART       Displays or configures Disk Partition properties.
+DOSKEY         Edits command lines, recalls Windows commands, and 
+               creates macros.
+DRIVERQUERY    Displays current device driver status and properties.
+ECHO           Displays messages, or turns command echoing on or off.
+ENDLOCAL       Ends localization of environment changes in a batch file.
+ERASE          Deletes one or more files.
+EXIT           Quits the CMD.EXE program (command interpreter).
+FC             Compares two files or sets of files, and displays the 
+               differences between them.
+FIND           Searches for a text string in a file or files.
+FINDSTR        Searches for strings in files.
+FOR            Runs a specified command for each file in a set of files.
+FORMAT         Formats a disk for use with Windows.
+FSUTIL         Displays or configures the file system properties.
+FTYPE          Displays or modifies file types used in file extension 
+               associations.
+GOTO           Directs the Windows command interpreter to a labeled line in 
+               a batch program.
+GPRESULT       Displays Group Policy information for machine or user.
+GRAFTABL       Enables Windows to display an extended character set in 
+               graphics mode.
+HELP           Provides Help information for Windows commands.
+ICACLS         Display, modify, backup, or restore ACLs for files and 
+               directories.
+IF             Performs conditional processing in batch programs.
+LABEL          Creates, changes, or deletes the volume label of a disk.
+MD             Creates a directory.
+MKDIR          Creates a directory.
+MKLINK         Creates Symbolic Links and Hard Links
+MODE           Configures a system device.
+MORE           Displays output one screen at a time.
+MOVE           Moves one or more files from one directory to another 
+               directory.
+OPENFILES      Displays files opened by remote users for a file share.
+PATH           Displays or sets a search path for executable files.
+PAUSE          Suspends processing of a batch file and displays a message.
+POPD           Restores the previous value of the current directory saved by 
+               PUSHD.
+PRINT          Prints a text file.
+PROMPT         Changes the Windows command prompt.
+PUSHD          Saves the current directory then changes it.
+RD             Removes a directory.
+RECOVER        Recovers readable information from a bad or defective disk.
+REM            Records comments (remarks) in batch files or CONFIG.SYS.
+REN            Renames a file or files.
+RENAME         Renames a file or files.
+REPLACE        Replaces files.
+RMDIR          Removes a directory.
+ROBOCOPY       Advanced utility to copy files and directory trees
+SET            Displays, sets, or removes Windows environment variables.
+SETLOCAL       Begins localization of environment changes in a batch file.
+SC             Displays or configures services (background processes).
+SCHTASKS       Schedules commands and programs to run on a computer.
+SHIFT          Shifts the position of replaceable parameters in batch files.
+SHUTDOWN       Allows proper local or remote shutdown of machine.
+SORT           Sorts input.
+START          Starts a separate window to run a specified program or command.
+SUBST          Associates a path with a drive letter.
+SYSTEMINFO     Displays machine specific properties and configuration.
+TASKLIST       Displays all currently running tasks including services.
+TASKKILL       Kill or stop a running process or application.
+TIME           Displays or sets the system time.
+TITLE          Sets the window title for a CMD.EXE session.
+TREE           Graphically displays the directory structure of a drive or 
+               path.
+TYPE           Displays the contents of a text file.
+VER            Displays the Windows version.
+VERIFY         Tells Windows whether to verify that your files are written
+               correctly to a disk.
+VOL            Displays a disk volume label and serial number.
+XCOPY          Copies files and directory trees.
+WMIC           Displays WMI information inside interactive command shell.
+
+For more information on tools see the command-line reference in the online help.
+
+--------------------------
+
+As max45 pointed out, the Asst1 guessnum.cpp needs to have instructions
+contained so a new user won't enter huge numbers.  In the early days,
+software had only what the author (who was assumed to be the only User)
+remembered about creating it.  
+
+In our time, there is a whole discipline of interface design, and many
+proverbs about how to avoid driving the User crazy.  This is progress.
+
+That is coming up, when we begin to include code which reads and uses
+the Command Line Arguments.
+The most useful reference is the one you create.  It keeps you 
+from having to look things up AGAIN.  It's tailored to YOU
+since it only contains stuff YOU needed...and therefor will
+likely need again.  
+
+
+What we've done so far:
+
+Enter, compile and run the Chapter 01 examples.
+
+Enter, compile and run the guessnum.cpp program.
+
+Play the guessnum game and develop a logical strategy 
+for winning the game every time,  then describe your
+strategy in two or three lines of comments in your
+copy of the guessnum.cpp source file.
+
+Confirm the correctness of your strategy by winning several
+games in a row, the look up "binary search" on the web.
+Enjoy the fact that you independently invented one of the
+most famous algorithms in programming.
+
+Write down any lingering questions you have about week 01
+material, then get ready to begin Week 02.
+
+We can program using CodeBlocks, at school, or on our own machines.
+
+
+
+
+-----------------------------
+
+Mon Sep  2 23:34:40 PDT 2019
+
+I've had to dig into the TOO thick book to get some idea how to use UEFI.
+
+UEFI replaces GRUB and LILO as boot managers, and it is in fact a PRE-OS: it
+can do productive and other (surveillance) work before the computer "looks" on.
+
+UEFI is the only way to boot Terabyte disks.
+
+----
+
+Coeval with that, I started noticing that most Linux systems now have
+hard disks of type BTRFS instead of ext3 or ext4. This utility will take a
+little more study, since instead of fdisk followed by mkfs, you can run the
+old fdisk, create one little primary partition (book zash?) then an 
+EXTENDED PARTITION, then use MKFS.BTRFS to put a BTR fs on it.  Remember to
+use mkfs.btrfs -d single  /dev/sdc5.  You see, btrfs is basically designed to
+manage RAID farms, so by specifying data = single, it knows this is just
+an old-fashioned or small usage for new disk tech.
+
+-----------
+
+

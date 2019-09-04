@@ -1,0 +1,63 @@
+This is how to upload your assignmnents to Buffy.
+Read the instructions carefully and practice until you can do it
+without thinking.
+
+Eventually, you'll want to copy files between computers.  When
+you're at UC or State, this will be a handy way to download class
+notes.  Keep this file for future reference.
+
+using_ftp:
+TRANSFERRING FILES TO AND FROM A SERVER USING FTP, (PSFTP.EXE)
+OR SCP (scp).
+
+Of all the non-windows utilities, this one (File Transfer Program)
+is the one I've seen used the most by business and colleges.
+
+Everybody uses ftp every day.
+
+File Transfers copy a file from one computer, over the network,
+and stores the copy on another computer where the user has access.
+
+You either UPload or DOWNload a file.  UPload means to give, DOWNload
+mean to receive.
+
+To upload your program files for grading using ftp:
+
+you need an ftp program.  PSFTP.EXE on the class web page
+is a Windows program. To get it on your machine, point your browser
+to the class web page at:
+http://209.129.16.61/~hhaller/data/cisc192
+
+Click on PSFTP.EXE where it's name appears in the list of files and
+DRAG it off your browser right onto your local desktop.  Now it's on
+your computer, and you can run it by double-clicking it.
+
+a command-window will pop up, type:
+
+	open 209.129.16.61 
+
+when prompted "login:" enter your assigned oryxNN login
+name, when prompted "passwd:" enter your password
+
+YOUR PASSWORD WILL NOT ECHO TO THE SCREEN AS YOU TYPE.
+
+you'll see that you're on Buffy in your home directory.  Now change
+directory (cd) to the directory for the assignment you're submitting.
+
+Change to the LOCAL directory containing your program with Local Change
+Directory (lcd):
+
+lcd e:\asst1\debug
+
+Change to the DISTANT directory where you want to put your file:
+
+cd asst0
+
+Upload your local file to the distant system:
+
+put main.cpp
+
+Quit:
+exit
+
+You're done!

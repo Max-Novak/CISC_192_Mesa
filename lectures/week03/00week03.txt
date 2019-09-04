@@ -1,0 +1,72 @@
+Week03 Chapter 3: Performing Mathematical Operations: 
+
+Chapter 3 is only 7 pages long, so read it closely.
+
+Be sure you know how to determine the size (in bytes)
+of any variable or type on your system, using cout << sizeof(type) ;
+
+The "Hierarchy of Operations" is similar to what you learned in 4th Grade.
+
+When in doubt, use parentheses to force execution in the order you want.
+
+Read p.48.
+
+Understand that arithmetic operations are statements, and knowing their 
+execution order makes it more likely they'll get the right answers.
+
+Since Chapter 3 is so short, this is a good time to get caught up, and to
+do some programming.
+
+In particular, I didn't have time to present one program which has a lot
+of meat to it: perfect.cpp.
+
+To find "perfect" numbers, we must find all that number's factors.
+But different numbers have different numbers of factors. Storing them in an
+array is impractical, and C lacks C++'s vectors and stacks' push() methods.
+But running the calculations once to identify the perfects, then running
+them again to print the output is abhorrent to reason.  Instead, I build
+an output line containing all the factors, then, at the end when I
+determine perfect or not, I simply print the line buffer if true, and
+discard it if false.  This brings C++ functionality to C, which is one
+of the classic tests for programmer aptitude.  Any fool can "use libraries",
+only the real thing can create them.
+
+Also, the user may run the program in "flood" mode where all numbers are printed
+suffixated with their type: Deficent, Perfect, or Abundant.  In that case, it
+will never end, so I capture the control-C interrupt so it can print a summary
+of the run before ending.  This can be applied to any program you write, and is
+a handy way to keep naive users from killing a run with open files.
+
+PLEASE read the comments about this: having a power doesn't mean you're wise
+enough to use it.  This is why I say that anyone who wants to carry a gun, probably
+by that very desire, is unfit to do so. 
+
+Only a rampant coward needs to arm himself just to feel equal to others.
+Unless he's in a real war (not a personal tantrum,) he should face
+his own fear and defeat it, rather than seeking a bully's advantages.
+
+As Edward R. Murrow explained it:
+
+"Just because your voice reaches halfway around the world doesn't mean
+you are wiser than when it reached only to the end of the bar."
+
+It applies here: the System Admins and the Programmers aren't rulers: we're Janitors.
+
+Check out perfect.cpp.  A perfect number is the sum of its factors.
+
+So any program searching for perfects must first know how to find a number's factors.
+This is a mind-numbingly drudge task which computers shine at: they never get bored.
+
+store the number in int num ;
+Declare a loop control variable / divisor.  The divisor holds the candidate
+which you're testing to see if it's a factor.
+
+for (i = 0 ; i < num ; ++i)
+{
+	if ( (num % i) == 0)
+	{
+		printf("%d is a factor of %d\n", i, num) ;
+
+	}
+} // simple enough?
+

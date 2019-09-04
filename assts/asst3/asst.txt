@@ -1,0 +1,128 @@
+DaysLived
+
+--------------------
+EXAMPLE RUN:
+
+How many years have you lived: 15
+(The "15" is TYPED BY THE USER.  It is ALL that is typed by the user.)
+
+The demo programs are: daysPlayed  and DAYSPLAYED.EXE.
+
+Naturally, you should try to get your numbers aligned vertically, that is always true,
+and you've been hearing it since you were 8.  
+
+You have lived:15 years:
+              5475 days
+           131400 hours
+        7884000 minutes
+      473040000 seconds
+
+
+or:
+
+
+           5475     days
+         131400     hours
+        7884000     minutes
+      473040000     seconds
+
+Just so you make it look neat, but if your boss is a real butthead, s/he can
+abuse your ego by asking where the commas are.  At the professional level,
+they're entitled to ask this, although I think that kind of nitpicking errs
+too much on the side of being a dogmatic quibbler.
+
+You'll get full credit on this assignment if you get the right numbers.  The last person
+I heard say "neatness counts" was our company Executive Offier, who was a punk.
+
+--------------------
+
+ASSIGNMENT:
+
+OUTPUT the question: ask the user how many years she has lived
+INPUT her answer, STORE it in years ;
+Then CALCULATE how many total days she's lived.
+STORE it in days
+CALCULATE how many total hours that is 
+STORE it in hours,
+CALCULATE how many total minutes that is
+STORE it in min,
+CALCULATE how many total seconds that is, 
+STORE it into sec
+OUTPUT your results in a format that makes sense.
+stop
+
+--------------------
+
+PSEUDOCODE:
+	//INPUT the number of years played
+	//CALCULATE  number of days   
+	//CALCULATE  number of hours  
+	//CALCULATE  number of minutes
+	//CALCULATE  number of seconds
+	//OUTPUT Years,
+	//OUTPUT Days,
+	//OUTPUT Hours,
+	//OUTPUT Minutes,
+	//OUTPUT Seconds
+
+Once you have the number of years, you can find days by creating a "days"
+variable, and multiplying years by 365.25:
+
+int days = 0.5 + (years * 365.25) ;
+
+And once you have days, you can find hours by creating "hours" and
+multiplying days by....
+
+A PROFESSIONAL WOULD CONSIDER: that many people will be a lot older than he, so they'll
+test extreme ages to confirm that their logic won't "break" just because they're very young.
+
+==================================
+
+Optional Enhancement: #include "commas.h"
+
+I've included "commas.h" in this directory for those who want to try their mettle against
+a typical real-world challenge.
+
+You will be looking up ways to do things throughout your career.  Now, the basic DaysLived.cpp 
+isn't a big challenge, it's just input, multiplying some numbers, and printing them out.  
+
+But if you're working on something like this, you should try to produce the best output you can.
+But Neither printf()  no cout << can handle automatic placement of commas in number fields.
+
+Years ago I fixed this problem with commas.h.  Like ALL new utilities and system calls, you
+have to find it, then, you must read it and think hard about how you'll use it.
+
+The idea is:
+0. locate the function.
+1. study the function
+	figure out what the data types the function's parms are,
+	understand the type of the value the function produces
+	be sure you translate that understanding into a program which uses the new function correctly.
+
+
+If you get it right, the demo program daysPlayedCommas was created this way.
+
+If you can solve this problem you'll be working at a professional level.
+-----------------------------------------------------------
+enter your age in years.
+you said: 125
+-----------------
+You are:              45656 days old
+                    1095744 hrs  old
+                   65744640 mins old
+                 3944678400 secs old
+-----------------------------------------------------------
+
+How many years have you lived: ----------------------------
+You have lived:
+                 125 years
+               45625 days
+             1095000 hours
+            65700000 minutes
+          3942000000 seconds
+----------------------------
+                 125 years
+              45,625 days
+           1,095,000 hours 
+          65,700,000 minutes
+       3,942,000,000 seconds 

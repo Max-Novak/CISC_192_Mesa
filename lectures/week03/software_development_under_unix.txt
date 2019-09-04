@@ -1,0 +1,549 @@
+SOFTWARE DEVELOPMENT UNDER UNIX
+
+This is the printed version of the narrative in the film of the same name.
+
+SUMMARY:
+Read http://209.129.16.61/~hhaller/data/cisc192/modules/system_access
+1. Read maxnames or oryxnames file to get a login and password from instructor.
+2. Download PUTTY.EXE to your Windows box.
+3. Configure PUTTY as directed in this file
+4. Log on
+5. edit file with jpico filename.cpp
+6. compile file with g++ filename.cpp
+7. run program with a.out
+END SUMMARY
+
+SOFTWARE DEVELOPMENT ON UNIX MAINFRAMES (1)
+
+We use the Linux system differently than Windows, we use the CLI
+("Command Line Interface") which is driven by you, the user, typing in
+commands and pressing ENTER to execute them.  It is very fast,
+powerful, and efficient, like a jet fighter, but like an airplane, it
+requires practice to use well.
+
+The password for online students (maxXX, oryxXX, etc.,), (until you change it, which
+you should do NOW with the "passwd" commmand) is at the tail of the file
+containing student login names, "maxnames", "oryxnames", depending on
+which class section you are in.
+
+Here's a quick explanation of how to use passwd, you can
+(once you log in) read the Linux Manual with the "man"
+command:
+
+$ man passwd
+
+will explain everything about passwd to you, pressing space
+displays the next screen, and pressing q when you're done
+will terminate the manual page.
+
+To get an intro to Linux, try:
+
+$ man intro
+
+A "good" password is a word that no dictionary holds.
+Make it hard to shoulder-surf.
+
+====================================================
+
+To create (edit) a file first.cpp, you would type:
+
+jpico first.cpp
+
+at the command prompt ($) and press RETURN
+
+Once you've saved the result, you'll compile it with:
+
+g++ first.cpp 
+
+We often make errors in programs.
+
+If you made programming mistakes, the compiler will list errors to the
+screen to guide you in repairing your Source Code.
+
+Read the first error closely, then go back into the editor, move to
+the line on which the error occurred, and fix the error.  Then save
+the file, and attempt to re-compile. 
+
+Executing the program:
+
+Once your program compiles without syntax errors, there
+will be a new file "a.out", which the compiler creates
+from your Source Code.  This is the executable module
+which was built from your pgoram.  To run it, simply type
+its name at the command prompt:
+
+	a.out
+
+Just because you fixed all the syntax errors, that doesn't mean
+your program is correct logically.  Now you must run and test
+your program against a variety of correct and incorrect input.
+
+Remember: when you write a program, you are building a machine that
+your users will use every day, so do it right.
+
+UNIX PROGRAM DEVELOPMENT TOOLS:
+
+Editor:
+	$ jpico yourprogramname.cpp (or)
+	$ pico yourprogramname.cpp (or)
+	$ emacs yourprogramname.cpp (or)
+	$ vi yourprogramname.cpp
+
+If you're not already an experienced user, leave emacs
+and vi alone until you've a weekend to read the man page.
+
+Compiler:
+	$ g++ -g -gp -o yourprogramname  youprogramname.cpp
+	$ cc  -g -gp -o yourprogramname  yourprogramname.c
+
+Debugger:
+	$ gdb yourprogramname
+
+Code Analysis Tool:	
+	$ gprof your programname
+
+Further help: read the text
+Further help:
+	man jpico
+	man g++
+	man gcc
+	man gdb
+	man gprof
+	man emacs
+
+---------------------------------------------------
+
+SYSTEM ORGANIZATION
+
+The computer is like a city.  It has neighborhoods, and buildings
+in it.  Your building is your "HOME directory", and your neighborhood is
+"/home/thu" or "/home/maxc".  You have a name in the computer, it is your
+"login" name of "max" or "oryx" or whatever, plus two digits.
+
+When you log on to the system, you will find yourself in your HOME
+directory.  At any time you can enter the command:
+
+pwd
+
+to find out what directory you are in.  (pwd = Print Working
+Directory)
+
+We create "sub" directories to use to keep our files organized.  Type
+the command:
+
+	l
+
+(that's an "ell", not a 1)
+
+and press ENTER to see the files and directories in your current
+location.  You might see, among other things:
+
+drwx------    2 max56   students       80 2003-08-29 02:31 Documents
+drwx------    2 max56   students       48 2003-10-28 20:07 asst1
+drwx------    2 max56   students       48 2003-11-23 19:46 asst2
+drwx------    2 max56   students       48 2003-12-16 17:20 asst3
+drwx------    2 max56   students       48 2003-12-17 15:47 asst4
+drwx------    2 max56   students       48 2003-12-17 15:48 asst5
+drwx------    2 max56   students       80 2003-09-03 11:38 demo
+drwx------    2 max56   students       80 2003-08-29 02:31 public_html
+
+(The "max56" will be your own login, of course,
+and the date/time stamps will be different.)
+
+To "move" from one directory to another you use the
+"cd" command.
+
+If you type:
+
+cd
+
+by itself, and press ENTER (ALL unix commands end
+with ENTER, I'm not going to say it any more) you
+will return to your own HOME directory.
+
+--------------------------
+
+The structure of Unix commands:
+
+cmd [-switches] [predicate...]
+
+"cmd" is the command itself.  Some Unix commands take optional
+"switches" which are preceeded by a hyphen '-', and some take
+"predicates".  For example, to copy file1 to file2, you might type:
+
+cp file1 file2
+
+To rename asst1.c to asst1.c.bak, BUT TO CHECK THAT YOU AREN'T
+OVERWRITING A PRE-EXISTING FILE NAMED asst1.c.bak, you might type:
+
+mv -i asst1.c asst1.c.bak
+
+The "-i" means "interactive: ask before clobbering target".
+
+The FIRST TIME you log in, you will want to change your password, so
+your files cannot be read or deleted by someone logging in as you.
+
+To change your password, type:
+
+passwd
+
+REMEMBER THE NEW PASSWORD YOU CHOOSE.  If you forget it, all I can do
+is reset it to something I choose.  Passwords are not stored on the
+system, and are not recoverable.*
+
+After you're done working in Unix, be sure to log off the system with:
+
+logout
+
+
+-------------------------------
+
+To create/edit a program file.
+
+Suppose you are going to work on the first
+assignment:
+
+cd asst0
+
+pwd 
+
+(just to make sure)
+
+ls -l
+
+(ditto)
+
+jpico asst0.cpp
+
+You will see your screen change, it will look like:
+
+
+
+   UW PICO(tm) 3.7                   File: asst1.cpp                                  
+
+
+
+<many blank lines here>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     [ New file ]
+^G Get Help   ^O WriteOut   ^R Read File  ^Y Prev Pg    ^K Cut Text   ^C Cur Pos    
+^X Exit       ^J Justify    ^W Where is   ^V Next Pg    ^U UnCut Text ^T To Spell   
+
+The lower part of the screen is a two-line reminder
+of the Pico commands.
+
+The "^" means: "hold down the CTRL key and press the letter
+following."
+
+With a little experimentation and practice, you will be able to create
+and save program source files.
+
+
+----
+
+*Think about that.  How can it be?  Yet, it is true.  When you
+understand how this is done, you'll have discovered one of
+the real secrets of modern technology and security.
+
+Everyone you are competing with in the job market understands
+Microsoft Windows.  Windows is everywhere.  Big computers are owned
+by larger companies, and larger companies offer higher salaries and
+more benefits.  To work for larger companies, it pays to understand
+the tools they use and that means Unix or MVS.
+
+MVS is beyond the resources of the Community College, and it is
+complicated and labor-intensive to use.  Jobs in MVS are hard to get
+for an entry-level programmer, but they pay well.
+
+Unix is much more common than MVS, but it is as powerful.  Unix developed
+at the University of California at Berkeley, after being invented by AT&T,
+and is available to us as Linux, FreeBSD, OpenBSD, Solaris, Macintosh
+OS/X, etc.  The market for Unix is alive and growing.
+
+----
+
+Other Unix things:
+
+
+Things you might like to research in your Copious Free Time:
+
+(Logging in)
+
+(Changing your password with passwd)
+
+(Displaying personal information with finger)
+
+(Changing your civilian name with chfn -f)
+
+(Displaying the local neighborhood with ls and pwd)
+
+(Files and the File System: Directories and Devices)
+
+(How to change (travel between) directories)
+
+(How to cd to the Instructor's source directories, and
+class Web directory)
+
+(How to cd back $HOME)
+
+(How to cp files)
+
+(How to rm files)
+
+(How to mv files)
+
+(How to view files with cat, more, and less)
+
+(What Programmers Do/What Programs Are.)
+
+Read: <A HREF="http://209.129.16.61/~hhaller/data/cisc192/modules/WhatIsAProgram.txt">What is a Program?</A>
+
+(How they do it.)
+
+
+DISK FILES,  PERMISSIONS, AND MODES:
+
+ALL C/C++ programs believe that they are accessing files on a Unix
+system.  Even though Windows or Netware has a different kind of "file
+system", you may, and should, write your code as if it were running on
+Unix.  The compiler writers will take care of any incompatabilities.
+
+Just remember that some features may not be available on non-Unix, so
+be careful what you rely on.
+
+EVERY FILE (and everything is a file on Unix) has four sets of
+"permissions" associated with it, plus an Owner, and Owner Group.
+
+0123456789
+-rw-r--r--    1 hhaller  staff         537 2004-05-24 18:34 recursion.c
+
+Column 0: what "kind" of a file it is.  
+	'-': regular file,
+	'd': directory
+	'l': symbolic link
+	'p': FIFO (named pipe)
+	's': socket (network connection)
+	'b': block special file (hard disk, etc.)
+	'c': char special file (keyboard, serial port)
+
+Columns 1-3: User (owner) permissions, r(read) w(write) x(execute)
+Columns 4-6: Group        permissions, r(read) w(write) x(execute)
+Columns 7-9: Other        permissions, r(read) w(write) x(execute)
+
+There are three columns to the far left that are not displayed by ls -l:
+
+SUID : Set User ID: let the user exeuting this program assume the privs 
+       of the file Owner.
+
+SGID : Set the Group ID: let the user executing this program assume
+       the privs of the owning Group.
+
+SSTK:  Set the Sticky Bit: See below.
+
+STICKY FILES
+       On older Unix systems, the sticky bit caused executable files to
+       be hoarded in swap space.  This feature is not useful on modern
+       VM  systems,  and  the  Linux  kernel ignores the sticky bit
+       on files.  Other kernels may use the sticky bit on files for
+       system-defined purposes.  On some systems, only the superuser
+       can  set  the  sticky bit on files.
+
+STICKY DIRECTORIES
+       When  the sticky bit is set on a directory, files in that directory
+       may be unlinked or renamed only by root or their owner.  Without
+       the sticky  bit,  anyone  able  to write  to  the  directory
+       can  delete or rename files.  The sticky bit is commonly found
+       on directories, such as /tmp, that are world-writable.
+
+
+------------------------------
+
+To manipulate the file's permissions in C or C++, use chmod().
+
+
+CHMOD(2)	    Linux Programmer's Manual		 CHMOD(2)
+
+
+NAME
+       chmod, fchmod - change permissions of a file
+
+SYNOPSIS
+       #include <sys/types.h>
+       #include <sys/stat.h>
+
+       int chmod(const char *path, mode_t mode);
+       int fchmod(int fildes, mode_t mode);
+
+DESCRIPTION
+       The mode of the file given by path or referenced by fildes is changed.
+
+       Modes are specified by or'ing the following:
+
+
+	      S_ISUID	04000 set user ID on execution
+
+	      S_ISGID	02000 set group ID on execution
+
+	      S_ISVTX	01000 sticky bit
+
+	      S_IRUSR (S_IREAD)
+			00400 read by owner
+
+	      S_IWUSR (S_IWRITE)
+			00200 write by owner
+
+	      S_IXUSR (S_IEXEC)
+			00100 execute/search by owner
+
+	      S_IRGRP	00040 read by group
+
+	      S_IWGRP	00020 write by group
+
+	      S_IXGRP	00010 execute/search by group
+
+	      S_IROTH	00004 read by others
+
+	      S_IWOTH	00002 write by others
+
+	      S_IXOTH	00001 execute/search by others
+
+
+The effective UID of the process must be zero or must match the owner
+of the file.
+
+If the effective UID of the process is not zero and the group of the
+file does not match the effective group ID of the process or one of
+its supplementary group IDs, the S_ISGID bit will be turned off, but
+this will not cause an error to be returned.
+
+Depending on the file system, set user ID and set group ID execution
+bits may be turned off if a file is written.  On some file systems,
+only the super-user can set the sticky bit, which may have a special
+meaning.  For the sticky bit, and for set user ID and set group ID
+bits on directories, see stat(2).
+
+On NFS file systems, restricting the permissions will immediately
+influence already open files, because the access control is done on
+the server, but open files are maintained by the client.  Widening the
+permissions may be delayed for other clients if attribute caching is
+enabled on them.
+
+RETURN VALUE
+On success, zero is returned.  On error, -1 is returned, and
+errno is set appropriately.
+
+ERRORS
+Depending on the file system, other errors  can	be  returned.	The  more  general
+errors for chmod are listed below:
+
+
+       EPERM The effective UID does not match the owner of the file,
+and is not zero.
+
+       EROFS The named file resides on a read-only file system.
+
+       EFAULT path points outside your accessible address space.
+
+       ENAMETOOLONG
+	      path is too long.
+
+       ENOENT The file does not exist.
+
+       ENOMEM Insufficient kernel memory was available.
+
+       ENOTDIR
+	      A component of the path prefix is not a directory.
+
+       EACCES Search permission is denied on a component of the path
+prefix.
+
+       ELOOP Too many symbolic links were encountered in resolving
+path.
+
+       EIO    An I/O error occurred.
+
+       The general errors for fchmod are listed below:
+
+       EBADF  The file descriptor fildes is not valid.
+
+       EROFS  See above.
+
+       EPERM  See above.
+
+       EIO    See above.
+
+CONFORMING TO 
+The chmod call conforms to SVr4, SVID, POSIX, X/OPEN, 4.4BSD.  SVr4
+documents EINTR, ENOLINK and EMULTIHOP returns, but no ENOMEM.
+POSIX.1 does not document EFAULT, ENOMEM, ELOOP or EIO error
+conditions, or the macros S_IREAD, S_IWRITE and S_IEXEC.
+
+The fchmod call conforms to 4.4BSD and SVr4.  SVr4 documents
+additional EINTR and ENOLINK error conditions.  POSIX requires the
+fchmod function if at least one of _POSIX_MAPPED_FILES and
+_POSIX_SHARED_MEMORY_OBJECTS is defined, and documents additional
+ENOSYS and EINVAL error conditions, but does not document EIO.
+
+POSIX and X/OPEN do not document the sticky bit.
+
+SEE ALSO
+       open(2), chown(2), execve(2), stat(2)
+
+
+
+Linux 2.0.32		    1997-12-10			 CHMOD(2)
+Using Code::Blocks                 to develop and run C++ programs. (Other file)
+Using Linux Command-Line tools     to develop and run C++ programs. (Other file)
+Using Microsoft Visual C++ Express to develop and run C++ programs. (THIS  file)
+
+You can come to Mesa Campus Lab or ILC  and use the systems there, or you
+can go to Microsoft.com and download a free copy of Visual C++ Express.
+(Those who are already familiar with programming may use any standard
+C++ compiler, but the instructor only supports the tools described in
+==> software_development_under_unix <==
+
+
+head: cannot open `software_development_under_Visual_C++' for reading: No such file or directory
+
+
+
+
+
+SOFTWARE DEVELOPMENT ON UNIX MAINFRAMES (1)
+
+
+==> software_development_under_Visual_Studio.txt <==
+Using Code::Blocks                 to develop and run C++ programs. (Other file)
+Using Linux Command-Line tools     to develop and run C++ programs. (Other file)
+Using Microsoft Visual C++ Express to develop and run C++ programs. (THIS  file)
+
+You can come to Mesa Campus Lab or ILC  and use the systems there, or you
+can go to Microsoft.com and download a free copy of Visual C++ Express.
+(Those who are already familiar with programming may use any standard
+C++ compiler, but the instructor only supports the tools described in
+the course.)
+
+Using Code::Blocks                 to develop and run C++ programs. (Other file)
+Using Linux Command-Line tools     to develop and run C++ programs. (Other file)
+Using Microsoft Visual C++ Express to develop and run C++ programs. (THIS  file)
+
+You can come to Mesa Campus Lab or ILC  and use the systems there, or you
+can go to Microsoft.com and download a free copy of Visual C++ Express.
+(Those who are already familiar with programming may use any standard
+C++ compiler, but the instructor only supports the tools described in

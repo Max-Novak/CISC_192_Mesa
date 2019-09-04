@@ -1,0 +1,122 @@
+The WINDOWS File System.
+How disks and files are arranged.
+
+Students have more trouble from the Windows File System than any other
+topic.  It's important to be able to find stuff...especially socks.
+So, let us begin correctly.
+
+"May we be friends in confusion, so that we may be brothers and sisters
+in understanding." -- Brian Bennett, Tools Group, Stanford Linear
+Accelerator and Collider, 3d Dan.
+
+Windows is built on the graveyard of DOS, Disk Operating System.  DOS was
+the first universal Personal Computer system, and it was named after
+the biggest part of itself, the File System.
+
+You don't see the details of files from Windows, in fact, Windows defaults
+to not showing you the full file name (the suffix is suppressed) but if
+you start a Command Line window, (START->RUN->CMD) you can really explore.
+Go ahead.
+
+To look at the local neighborhood, try:
+
+DIR
+
+(Press ENTER after each command line command to execute it.)
+
+A File System is the way information is organized on Storage Devices
+like Disks, Memory Sticks, CD/DVD ROMs, tapes (sometimes) and suchlike.
+
+The Windows File System is pretty much the same as DOS's, it only has
+a few extra bells and whistles like longer file names, spaces in file
+names (YOU WILL BE EXILED TO SIBERIA FOR USING SPACES IN FILE NAMES!) and
+shared directories across a network.
+
+Each "volume" (disk, DVD, whatever) has a name consisting of a letter
+followed by a colon ':'.
+
+A: The first  floppy.
+B: The second floppy.
+C: The First Hard Disk.
+
+F:, I:, etc., devices like Memory Sticks, DVD's, etc.
+
+Really High Letters like L:, Z:, networked drives connected to your
+computer with the "map" command.
+
+What you have to do differently for any given volume: nothing.  You just
+use them.
+
+HOW THE VOLUME IS ORGANIZED:
+
+By "subdirectories".
+
+On your C: drive, you probably have a subdirectory named "WINDOWS"
+
+
+Look for it:
+
+DIR C:\WINDOWS
+
+(press Enter.)
+
+See?
+
+The BACKSLASH '\' separates parts of a "PATH".  A PATH is the
+fully-described location of a directory or file.
+
+In Unix the '\' is '/'.
+
+You MOVE AROUND the file system by either CHANGING VOLUMES or CHANGING
+DIRECTORIES or both.
+
+You CHANGE VOLUMES by typing the name of the new
+volume and pressing ENTER.
+
+A:
+
+C:
+
+I:
+
+You CHANGE DIRECTORIES with the "CD" command, followed by a space and
+the name of the target directory you wish to change to.
+
+You LIST THE CONTENTS OF A DIRECTORY with the "DIR" command.
+
+You can modify commands with WILDCARDS.
+
+To list all files which end in ".java" you would:
+
+DIR *.java
+
+You COPY files with:
+
+COPY oldfile newfile
+
+You DELETE files with:
+
+DEL filename
+
+You DELETE ALL FILES with:
+
+DEL *.*
+
+"*.*" means ALL file NAMES ending in ALL file EXTENSIONS.
+
+File names have a first part, a period, and an extension.
+
+The file extension tells Windows and other software what "kind" of a
+file the file is.
+
+A file that ends in ".java" is a java program we have written.  A file
+that ends in ".clsss" is an EXECUTABLE Java program or library.
+A file that ends in .cpp or .C is a C++ program.  A file ending in *.c
+is a C program.
+
+You can look at the contents of a file with:
+
+MORE < filename
+
+Unix is like DOS, but a lot better designed and stronger.
+

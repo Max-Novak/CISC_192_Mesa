@@ -1,0 +1,28 @@
+Questions for students:
+
+	Are your "seconds" a smaller value than your "minutes"? 
+	(Try entering a huge number for "years". This is called testing.)
+	What does that tell you?
+	How can you be sure your program's numbers are correct?
+
+	How important is correctness? 
+	Do a web search on "Therac-25". How many people died?
+	WHY??
+	NOW how important is correctness? 
+
+	What would be the impact on your life if your mistakes hurt someone?
+	Refer to the text and list all integral (whole number) data types on a sheet of paper.
+	Compare those data types with what you're using in your program.
+	Are any changes indicated?
+	Look at your list, and at your program, and think about it.
+	Do you want to change anything?
+	NEVER GIVE YOUR USER A WAY TO BREAK YOUR PROGRAM.
+	Try breaking it yourself before you move it into production.
+	If you can break it, it's not finished.
+
+	(When I say all integral types, I'm thinking:
+	unsigned short 
+	short
+	int
+	long
+	unsigned long long and so on: all of them.)
