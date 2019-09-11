@@ -1,0 +1,576 @@
+Block 4: 
+
+READ CHAPTER 4 Performing logical operations.
+
+C++ "STREAMS" i/o (input/output)
+
+All execution Control depends on logical tests.
+All loops are controlled by logical tests.
+All basic math depends on the logical operations formalized by
+George Boole: AND &  OR |  XOR ^ NOT ! or ~ .
+
+Control means making a decision as to what to do next.
+
+The classic example of "what kind of language C is" is this:
+
+int x = 14 ;
+if (x = 0)
+	printf("%d is equal to 0\n", x) ;
+else
+	printf(%d is not equal to 0\n", x) ;
+
+0 is the value of "false", so while there IS a zero in x, the
+assignment still returns false, since zero was the value assigned.
+So the program puts a zero in x, then lies about it.
+
+And the compiler won't even warn you.
+
+C programmers need to know what they're doing.
+
+(The test above should have been "if( x == 0)" instead of "if (x = 0)".
+
+INPUT:::
+YOU CAN INPUT WORDS:
+cin >> var ;
+
+WHOLE LINES:
+getline(cin, string_var) ;
+
+OR SINGLE CHARACTERS:
+c = cin.get() ;
+
+MOST TIMES SINGLE CHARACTERS ARE THE MOST FLEXIBLE WAY TO READ INPUT.
+
+"CONTROL" MEANS, LETTING THE PROGRAM DECIDE WHAT TO DO BASED ON INPUT,
+OR HOW MANY TIMES TO DO SOMETHING BASED ON A COUNTER OR "SENTENEL".
+
+A control statement controls another statement:
+
+if (0 == x)
+	cout << x ;
+
+The "controlled" statement may be a single physical statement
+like above, OR it may be a compound statement (enclosed in
+braces) like:
+
+if (0 == x)
+{
+	x++ ;
+	cout << x << endl ;
+} // if x eq zero ends
+
+	Get in the habit of commenting your closures (right
+	braces).  
+	c = cin.get() ;
+	if (c == 'q') 
+		return 0 ; //CONTINUE RUNNING OR STOP
+	
+	LOOPS: [while(),  do .. while() ; for(;;); ]
+
+	int array [SIZE] ;
+	for (int i = 0 ; i < SIZE ; ++i)
+		cout << array[i] << endl ;
+
+	OR TAKE ONE OF SEVERAL PATHS THROUGH ITS CODE
+	OR DO SOME STATEMENTS OVER AND OVER.  
+THERE ARE TWO BASIC KINDS OF CONTROL: DECISIONS AND LOOPS
+
+DECISIONS ARE if() and ? :   (question-mark/colon).
+DECISIONS USE RELATIONAL OPERATORS LIKE != == > <= AND SO ON.
+
+LOOPS CONTROL HOW MANY REPETITIONS ARE PERFORMED: 
+====================================================
+
+Control I
+BLOCKS are statements surrounded by braces {}.
+You can control a single statement OR a BLOCK using
+a conditional or repetition feature.
+
+INDENTATION isn't necessary to the compiler, only the programmer.
+But to the programmer it makes things clearer.
+
+Conditional:
+IF
+
+(if, looping, conditionals.)
+
+An if() only controls one statement.  The controlled statement
+can either be a single physical statement, 
+
+if(harry == hungry)
+	eat_the_peach() ;
+
+
+or a compound statement made of several physical statements
+enclosed in braces.  (A BLOCK).
+
+if (harry == ravenous)
+{
+	call_for_reservations (mcgintys) ;
+	drive_to_town(mcgintys) ;
+	pig_out(boxties, fries, kidney_pudding) ;
+	summon_taxi(home) ;
+	sleep(5700000000) ;
+	ingest_substance(acetamenophen) ;
+}
+
+--------------
+switch and case
+
+The switch construct is just a clearer way of writing
+a series of if statements, it doesn't run any faster or
+slower than if() statements. BUT if you leave out the
+break; statements, you can cause a problem:
+
+switch (x)
+{
+     case -1 : puts( "-1") ;
+     case  0 : puts( "0" ) ;
+     case  1 : puts( "1" ) ;
+} ;
+
+Bear in mind that above, if x equals -1, this will print:
+-1
+0
+1
+
+If x == 0, the code will print:
+
+0
+1
+
+Why?? the break statements are missing.
+
+You SHOULD use "break" statements to fix this characteristic of
+switches called "cascading" but it's not a syntax requirement:
+
+switch (x)
+{
+     case -1 : puts("-1");  break ; 
+     case  0 : puts("0");   break ; 
+     case  1 : puts("1");   break ;
+} ;
+
+LOOPS (Repetitive execution.)
+
+Interrupting loops
+
+While (++i < 100)
+{
+	if ( i == 4 || i == 32 || i == 65)
+		continue ;
+	cout << i << endl ; 
+}
+
+while(some condition)
+{
+     statement ;
+}
+
+Make sure that something happens in "statement" that will
+eventually alter the "condition" or you'll have an
+infinite loop, the program won't end.
+
+do
+{
+     statement ;
+} while (some condition) ;
+
+The do..while LOOKS like the while, but it is different,
+
+since the do..while WILL ALWAYS EXECUTE AT LEAST ONE TIME.
+
+The "while" construction may NEVER execute, if the condition
+starts out false.
+
+do..while is used to get a reply from a user, and to keep asking until
+the reply makes sense.
+
+The for() loop is the same in C/C++/Java/PHP/awk/PERL.
+
+NOTE: good programs almost never have "complex situations", because
+good programmers keep thinking until they've broken the task down into
+simple steps.  IF A GOOD PROGRAMMER HAS A HEADACHE IT'S BECAUSE
+S/HE GOT TOO MUCH SUN, NOT BECAUSE S/HE WROTE A DINOSAUR SUBROUTINE.
+
+for (starting_initialization ; continuity_test ; iteration_operation)
+     executed-statement
+
+// print numbers 0 - 9:
+for (x = 0  ; x < 10  ; x++)
+     cout << x << endl ;
+
+// print numbers running up from 0 and down from 10:
+for (x = 0 , y = 10 ; x < 10 && y > 0 ; x++ , --y)
+     cout << x << " " << y << endl ;
+
+========================
+
+Loops can be ended early if you want: 
+
+continue ;  ends THIS ITERATION through the loop
+
+break ;     ends the loop altogether
+
+
+THE DIRTY WORD (c):
+
+goto is used to jump from one part of a function to another.
+
+goto is never necessary, but sometimes it's cleaner and simpler.
+
+Up to now, we've read in WORDS or LINES at a time from the
+user's keyboard using "cin >>".   "cin >>" is an "overloaded
+stream operator" and has a lot of intelligence, so that
+it can tell how many characters / keystrokes to read based
+on what variable type you're filling.
+
+But how about if we want to read in character-by-character?
+Then we use:
+
+int cin.get()
+
+/*-----------------------------------------------------------------
+*	single-char input and output demo
+*
+-----------------------------------------------------------------*/
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+
+int main (int argc, char *argv[], char **env)
+{
+	int x ;
+	x = cin.get() ; 	// cin.get() returns a CHAR
+	cout.put(x) ;		// cout.put() accepts a CHAR argument
+	cout.put('\n') ;
+	cout << x << endl ; // cout << accepts an object, and decides for itself
+	                    // how to format it.  
+} // main ends
+
+	 THEREFORE, after: $ a.out
+	 this program prints:
+	      G
+	      G
+	      71
+	 I press G, 'G' is printed by put(), and the integer VALUE
+	 of the CHARACTER 'G' (71) by cout << .
+
+Remember, we generally read in character data into INTEGERS because
+the EOF (end of file) mark is really the integer constant -1, and
+can't fit into a char, only an int, and we _do_ want to know when
+we're at the end of the input.
+
+(If you want to confirm this, run sizes.cpp.  cout << sizeof(int) ;
+produces 4, sizeof(char) produces 1. The digits are the number of bytes.)
+
+Now we wish to write a filter program (think of water pumps)
+which reads in a stream of characters, and capitalizes
+all letters, then prints them out in their capitalized form.
+
+To capitalize, we will use toupper().  The toupper() function takes an
+integer value, and if it represents a lower case letter, returns the
+integer value which corresponds to that capital letter.  If the
+argument you send toupper() IS NOT a lower-case letter, then toupper()
+just returns exactly what you send it.  This is an example of a "safe
+and robust" function that you don't have to waste an if() statement
+on.
+
+PSEUDOCODE:
+
+START PROGRAM
+DEFINE c //a variable to hold the characters we read in.
+
+BEGIN LOOP
+     READ A CHARACTER INTO c
+     PRINT OUT toupper(c)
+CONTINUE LOOP WHILE THERE IS INPUT
+END PROGRAM
+
+Now we have a blueprint, it's just a matter of 
+choosing our tools.
+
+We will need an int variable, we've already decided to call it "c".
+
+We will need a loop structure.  Since we have no idea how much
+or how little our user will type, we can't use for(), so we
+probably want to use "while" or "do..while".
+
+We still need a tool to tell when the user is still typing,
+in other words, an end-of-input indicator.  We have one,
+it is called EOF.  It is defined in the cstdio header file.
+
+(THIS is the reason we are reading our keystrokes into an
+int, instead of a char.  A char cannot hold EOF, so our
+end-test would not work.)
+
+int c = ' ' ; // start knowing what's in c
+
+		do
+     {
+          c = cin.get() ;
+          cout.put(c) ;
+     } while (c != EOF) ;
+
+The above loop will continue to print what it reads until it hits end
+of file.  If the user is typing to the program, s/he can type end of
+file with ^D (hold down CTRL and press d) in Unix, or ^Z (control z)
+in Windows.
+
+This is the traditional C way to find EOF.
+
+Another C method is:
+
+while (!feof(stdin)) // the "feof()" function
+{
+     c = cin.get() ;
+     cout.put(c) ;
+}
+
+look:
+
+	int c = cin.get() ;
+	while (!cin.eof())
+	{
+		cout.put(toupper(c)) ;
+		c = cin.get() ;
+	}
+
+That is C++ only.  (Here we are using the METHOD eof() which is a member
+of the CLASS OBJECT cin, which is an INSTANCE of the class "ofstream" .)
+
+This program is intended to "filter" files, so we run it so:
+
+waterpump.exe < infile.txt
+
+That way, when the program reaches the end of the file infile.txt,
+the SYSTEM generates an EOF for us.  The "<" means: "Make infile.txt
+impersonate a user typing at the console."
+
+<<PLAYING WITH LOOPS>>
+
+NEWS FLASH: YOU CAN PUT ONE LOOP INSIDE ANOTHER.
+YOU CAN THINK OF THE FIRST LOOP AS CONTROLLING THE LINES YOU PRINT,
+AND THE SECOND LOOP AS CONTROLLING THE COLUMNS WITHIN EACH LINE.
+
+Now, suppose you wanted to print a table of rows, and each row 
+a series of ascending numbers:
+
+
+/*-----------------------------------------------------------------
+*	ascending_rows.cpp	-	nested for() 's
+-----------------------------------------------------------------*/
+#include <iostream>
+#include <iomanip>
+
+using namespace std ;
+
+int main ()
+{
+
+	int row, col ;
+	for (row = 0 ; row < 10 ; ++row)       // prints rows
+	{
+		for (col = 0 ; col < 10 ; ++col)    // prints individual row
+		{
+			printf("%d\t", col) ;
+		}
+		cout.put('\n') ;
+	}
+}
+this prints:
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+0	1	2	3	4	5	6	7	8	9
+
+(You really should fire up the CPU and
+hack this in, so you can run it and play with it.)
+
+-----------------------------------
+
+Now, what would this print?
+
+	for (a = 0 ; a < 10 ; ++a)
+	{
+		for (b = a ; b < 10 ; ++b) 
+			printf("%d\t", b) ;
+		cout.put('\n') ;
+	}
+
+Here's the answer.  Can you explain why?
+
+0	1	2	3	4	5	6	7	8	9
+1	2	3	4	5	6	7	8	9	
+2	3	4	5	6	7	8	9	
+3	4	5	6	7	8	9	
+4	5	6	7	8	9
+5	6	7	8	9	
+6	7	8	9	
+7	8	9	
+8	9	
+9	
+
+
+
+You can see how powerful for() loops are.
+How would you modify the above program to produce this?
+0	1	2	3	4	5	6	7	8	9	
+ 	1	2	3	4	5	6	7	8	9	
+ 	 	2	3	4	5	6	7	8	9	
+ 	 	 	3	4	5	6	7	8	9	
+ 	 	 	 	4	5	6	7	8	9	
+ 	 	 	 	 	5	6	7	8	9	
+ 	 	 	 	 	 	6	7	8	9	
+ 	 	 	 	 	 	 	7	8	9	
+ 	 	 	 	 	 	 	 	8	9	
+ 	 	 	 	 	 	 	 	 	9	
+
+-------------------------------------
+
+For Samurai, here's a Black Belt Meditation: how would
+you write a program "full_ascending_rows.cpp" to produce this:
+
+
+0	1	2	3	4	5	6	7	8	9	
+1	2	3	4	5	6	7	8	9	0	
+2	3	4	5	6	7	8	9	0	1	
+3	4	5	6	7	8	9	0	1	2	
+4	5	6	7	8	9	0	1	2	3	
+5	6	7	8	9	0	1	2	3	4	
+6	7	8	9	0	1	2	3	4	5	
+7	8	9	0	1	2	3	4	5	6	
+8	9	0	1	2	3	4	5	6	7	
+9	0	1	2	3	4	5	6	7	8	
+
+(hint, it only takes two extra lines.)
+
+--------------------------------------------
+
+Now we can start playing spy-fi!  Consider: we U.N.C.L.E. agents
+need to breach security and gain access to enemy computers.  The enemy
+(THRUSH) has a computer which requires a two-letter password. (They may
+be Evil, but they're not smart.)  Write a program to generate all
+possible two-character passwords and print them neatly.  This is called
+a Brute-Force Attack.  It should print:
+
+Hint: use a for() within a for()
+
+aa ab ac ad ae af ag ah ai aj ak al am an ao ap aq ar as at au av aw ax ay az
+ba bb bc bd be bf bg bh bi bj bk bl bm bn bo bp bq br bs bt bu bv bw bx by bz
+ca cb cc cd ce cf cg ch ci cj ck cl cm cn co cp cq cr cs ct cu cv cw cx cy cz
+da db dc dd de df dg dh di dj dk dl dm dn do dp dq dr ds dt du dv dw dx dy dz
+ea eb ec ed ee ef eg eh ei ej ek el em en eo ep eq er es et eu ev ew ex ey ez
+fa fb fc fd fe ff fg fh fi fj fk fl fm fn fo fp fq fr fs ft fu fv fw fx fy fz
+ga gb gc gd ge gf gg gh gi gj gk gl gm gn go gp gq gr gs gt gu gv gw gx gy gz
+ha hb hc hd he hf hg hh hi hj hk hl hm hn ho hp hq hr hs ht hu hv hw hx hy hz
+ia ib ic id ie if ig ih ii ij ik il im in io ip iq ir is it iu iv iw ix iy iz
+ja jb jc jd je jf jg jh ji jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz
+ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz
+la lb lc ld le lf lg lh li lj lk ll lm ln lo lp lq lr ls lt lu lv lw lx ly lz
+ma mb mc md me mf mg mh mi mj mk ml mm mn mo mp mq mr ms mt mu mv mw mx my mz
+na nb nc nd ne nf ng nh ni nj nk nl nm nn no np nq nr ns nt nu nv nw nx ny nz
+oa ob oc od oe of og oh oi oj ok ol om on oo op oq or os ot ou ov ow ox oy oz
+pa pb pc pd pe pf pg ph pi pj pk pl pm pn po pp pq pr ps pt pu pv pw px py pz
+qa qb qc qd qe qf qg qh qi qj qk ql qm qn qo qp qq qr qs qt qu qv qw qx qy qz
+ra rb rc rd re rf rg rh ri rj rk rl rm rn ro rp rq rr rs rt ru rv rw rx ry rz
+sa sb sc sd se sf sg sh si sj sk sl sm sn so sp sq sr ss st su sv sw sx sy sz
+ta tb tc td te tf tg th ti tj tk tl tm tn to tp tq tr ts tt tu tv tw tx ty tz
+ua ub uc ud ue uf ug uh ui uj uk ul um un uo up uq ur us ut uu uv uw ux uy uz
+va vb vc vd ve vf vg vh vi vj vk vl vm vn vo vp vq vr vs vt vu vv vw vx vy vz
+wa wb wc wd we wf wg wh wi wj wk wl wm wn wo wp wq wr ws wt wu wv ww wx wy wz
+xa xb xc xd xe xf xg xh xi xj xk xl xm xn xo xp xq xr xs xt xu xv xw xx xy xz
+ya yb yc yd ye yf yg yh yi yj yk yl ym yn yo yp yq yr ys yt yu yv yw yx yy yz
+za zb zc zd ze zf zg zh zi zj zk zl zm zn zo zp zq zr zs zt zu zv zw zx zy zz
+
+
+(Remember, you can "break" a program when it's running by using
+the DEBUG menu, or pressing Control-C at the command line.)
+
+Now, try something a little more realistic: imagine that the THRUSH
+computer requires a 6-character password.  Modify the code, Get it
+running, and let it run for a while.  Any intuitive feelings about using
+this approach to find a password?  Do you think it would be efficient
+enough to be worth trying?
+
+(THIS IS A GOOD PLACE FOR A DISCUSSION GROUP THREAD.)
+
+What do you think of Brute Force attacks in general?
+
+What if the password could be any length between 4 and 15?
+(Hint: you'd use a variable in the first loop this place:
+
+for (x = ? ; x < (some variable) ; ++x)
+
+The way to calculate how many different 6-char  password possibilities
+is: 26 to the 6th power.  It's OK to use a calculator or to write code
+to do it.
+
+SHEER, UNBRIDLED GOOFING-OFF:
+A generalized program would tell you how many combinations there are
+for n letter passwords. I wrote one.  For those who are feeling like
+they're pretty good at it, can you produce the same output using only the
+C Standard Library printf() family, string objects, and your own code?
+(No, the printf() family doesn't do commas.:)
+
+
+Length                Possible Passwords
+ 2	                                     676	6.760000e+02
+ 3	                                  17,576	1.757600e+04
+ 4	                                 456,976	4.569760e+05
+ 5	                              11,881,376	1.188138e+07
+ 6	                             308,915,776	3.089158e+08
+ 7	                           8,031,810,176	8.031810e+09
+ 8	                         208,827,064,576	2.088271e+11
+ 9	                       5,429,503,678,976	5.429504e+12
+10	                     141,167,095,653,376	1.411671e+14
+11	                   3,670,344,486,987,776	3.670344e+15
+12	                  95,428,956,661,682,176	9.542896e+16
+13	               2,481,152,873,203,736,576	2.481153e+18
+14	              64,509,974,703,297,150,976	6.450997e+19
+15	           1,677,259,342,285,726,023,680	1.677259e+21
+16	          43,608,742,899,428,878,188,544	4.360874e+22
+17	       1,133,827,315,385,150,749,016,064	1.133827e+24
+18	      29,479,510,200,013,920,011,288,576	2.947951e+25
+19	     766,467,265,200,361,851,574,026,240	7.664673e+26
+20	  19,928,148,895,209,410,339,947,937,792	1.992815e+28
+
+Before the end of the semester, I'll provide you with my 
+comma routine for printf().  Since I have met so few programmers who ever
+wrote one.  I'm fully prepared for one of my students to write some of
+my utilities better, smaller, and faster, since that is what usually
+happened all through our history.  Anything I've done, you can do, too,
+but programmers only do their best work when it's on a tool they want
+to use themselves.
+
+=======================================
+
+LAST WORD ON DATA BASICS:
+
+So far we've met the Basic Types:
+char
+bool
+short
+int
+long
+long long
+float
+double
+
+I've casually mentioned that any of them can be created
+en masse as "arrays", and that arrays are useful.
+
+int day[366] ;
+
+We'll talk more about this later, but for now, just remember that
+arrays are the most-used storage type in business software.
+
+http://www.youtube.com/watch?v=C2vgICfQawE
+https://www.youtube.com/watch?v=wgJfVRhotlQ

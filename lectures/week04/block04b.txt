@@ -1,0 +1,171 @@
+Block 4:
+
+Early String Introduction:
+Look at stringinput.cpp in this directory.
+
+"Never let your user type anything that will knock you off the air."  
+When working as a programmer, if you always read
+in numbers as CHARACTERS, a mis-typed 'l' or 'o' won't break
+your program, and can be handled.
+
+READ
+VALIDATE (CLEAN)
+CALCULATE with the input
+
+String manipulation is always safer.
+
+STRING OBJECTS are a lot more convenient than arrays of char[].
+
+FUNCTIONS, PROTOTYPES, DECLARATIONS, ARGUMENTS, AND RETURN VALUES.
+
+=====================================
+
+READ CHAPTER I - 4 Dividing your Work with Functions
+
+PROGRAMS ARE BUILT FROM FUNCTIONS.  FUNCTIONS HAVE TYPES LIKE VARIABLES,
+(SINCE THEY RETURN VALUES, AND VALUES HAVE TYPES), AND ARE OFTEN USED
+IN PLACES VARIABLES ARE.
+
+VARIABLES AND FUNCTIONS HAVE "SCOPE".  SCOPE IS THE RANGE OF LOCATIONS
+IN THE PROGRAM WHERE THE VARIABLE OR FUNCTION CAN BE SEEN AND REFERENCED.
+
+WHEN SEVERAL FUNCTIONS HAVE THE SAME NAME, BUT DIFFERENT ARGUMENT LISTS,
+THEY ARE "OVERLOADED".  THAT MEANS, SEVERAL FUNCTIONS HAVE THE SAME NAME.
+THIS IS "POLYMORPHISM".  (Read poly1.cpp.)
+
+WHEN A FUNCTION CALLS ITSELF WE SAY IT IS "RECURSIVE".
+WE'LL LOOK AT THAT MUCH LATER, IT'S A WHOLE DIFFERENT WAY OF THINKING.
+
+END SUMMARY
+
+An example of many-file application: SORTDEMO.
+
+I've provided you an example of a real program built from several 
+functions, each in its own file.  To build it, we run "make" which
+uses the Makefile database to build "sortdemo"
+-------------
+
+Review: controlling program flow: loops and conditionals.
+
+If you know for() and if(), that's really all you'll need.
+
+All these others are just for convenience:
+for(;;), while(), do .. while(), if .. else , 
+switch() { case () : ... , case () :} , break, continue ,
+logical AND && , logical OR ||, and Equality == vs Assignment =
+
+IF YOU HAVE COMPLEX LOGIC, YOU'LL HAVE UNEXPECTED HOLES
+IN THAT LOGIC.  KEEP YOUR LOGIC SIMPLE. STUPID MEANS
+ROBUST.  
+
+The components of a C++ program are generally FUNCTION
+CALLS.  There are two kinds of functions: "member"
+functions found in classes, and "static/global" functions
+found in your program or in some library you're linking
+to like math or ncurses.
+
+Example:
+
+#include <cmath>
+
+double d = sqrt(3.14159) ;
+
+SQRT() is in the "math library" and the compiler doesn't know about it
+unless you declare it.
+
+MOST OF THE STATEMENTS IN A C++ PROGRAM ARE FUNCTION CALLS.  
+THE COMPILER ONLY KNOWS THE FEW RESERVED COMMANDS THAT ARE NATIVE TO C++.
+THEREFORE: WE USE INCLUDE FILES ("header" files) TO declare THE MANY
+FUNCTIONS WE USE.  THOSE FUNCTIONS IN THE "Standard Library" ARE 
+DECLARED IN STANDARD HEADER FILES:
+
+stdio.h   <cstdio>
+ctype.h   <cctype>
+strings.h <strings>
+math.h    <cmath>
+time.h    <ctime>
+iostream  <iostream>
+iomanip   <iomanip>
+string    <string>
+vector    <vector>
+sys/stat.h   <sys/stat.h>
+and so on.
+
+"Header" files are human-readable text.
+
+C has relatively few standard functions, but C++ adds
+standard functions regularly.  This is due to the "Standard
+Library" which was originally called the "Standard Template
+Library".
+
+Yes, this means that when we're "programming in C++" we really
+spend most of our effort calling library functions which 
+are written in C++, but not part of the language.
+
+--------------------
+Some functions have parameters, or "arguments":
+
+int sumprod3 (int a, int b, int c)
+{
+	return (a + b) * c ) ;
+}
+
+The ORDER of the parameters is crucial.  If you write:
+
+cout << sumprod3(1, 2, 6) ;
+
+then 1 and 2 will be added, and their sum multiplied by 6.  The Parameters
+are "positional", so the ORDER of the _arguments_ (the actual numbers)
+determines which argument is stored in which parameter.  See?
+
+"Hello, I'm here for an argument."
+(Nasty smile.) "No, you're not."
+"But...."
+
+--------------------
+
+Function Prototypes "declare" their functions. 
+
+They tell the compiler what TYPE of value the function
+returns, and what TYPES of values it wants in its
+arguments.
+
+C Standard Library Header Files are SOURCE CODE FILES that declare and
+define variables, functions, macros, etc., that are useful.
+
+Variables in functions are created and destroyed as the function is
+called, and returns to the caller.
+
+---------------
+Function Overloading:
+
+When two or more functions have the same name but different parameter
+lists, they are said to be "overloaded".  The compiler will figure out
+which one to call by inspecting the types of the values or variables
+you pass to the function when you call it.
+
+Read: <A HREF="http://209.129.16.61/~hhaller/data/cisc192/modules/overloading_functions">overloading_functions</A>
+Read: <A HREF="http://209.129.16.61/~hhaller/data/cisc192/modules/polymorphism">polymorphism</A>
+
+---------------
+
+
+PASSING ARGUMENTS:  (Pass by Value)
+
+WHEN YOU PASS ARGUMENTS TO A FUNCTION, YOU ONLY PASS COPIES, not the
+actual arguments.  The function cannot change the values of the 
+arguments in the calling program, it can only change the copies it
+receives.
+
+EXCEPT FOR ARRAYS.  If you pass an array, the function can change the
+array elements.  We'll understand that when we study pointer variables.
+
+-----------
+
+There are many useful (old!) functions which can accept Arrays of char,
+but not strings. So we store our text in strings, and if we need
+to use one of those functions, we pass it the string's .c_str()
+just as if it were an Array of char.
+
+Some of those old functions are:
+strrev(), strtok(), strncpy(), strfry(), etc.
