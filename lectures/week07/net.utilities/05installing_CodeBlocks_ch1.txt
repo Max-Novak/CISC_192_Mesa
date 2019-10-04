@@ -1,0 +1,50 @@
+Install CodeBlocks on your home machine.  Even if you don't plan on
+using it, get it installed and tested before school starts.  That way,
+if the network faults, or Buffy is down, you can continue to work on your
+code and not get behind.  CodeBlocks runs on Windows, Linux, or Macintosh.
+
+If you're planning on using a Macintosh, don't.
+Less than 10% of the students who have tried to use Macs in this class
+finished or passed the course.  You can figure out why, if you aren't
+in thrall to Apple propaganda.  Since Macs cost twice what they should,
+YOU figure out how Apple operates, and what is the ability of the brains
+of people who buy their stuff to identify and cope with reality, as opposed
+to being led around by their noses by greedy corporations.
+
+Be aware: there is no "controversy" about the nature of reality.  There is
+only what is.  If two people disagree, we have adversarial processes
+based on the scientific method and the dilectical rules by which society
+governs itself, based on the twofold processes of Demonstration and Proof.
+Since so many corporations make a lot of money providing such poor goods
+and services, it seems to indicate that there are many people who are
+too foolish to think and act rationally.  This may be due to ignorance,
+not necessarilyy to mental incapacity, so be slow to judge.
+
+http://www.dummies.com/how-to/content/how-to-install-c-codeblocks-in-macintosh.html
+
+Install CodeBlocks on a Windows box: http://www.codeblocks.org  Install
+the CodeBlocks MINGW distribution so you have the same compiler for
+CodeBlocks which we use under Linux.  Don't mess with Microsoft Visual
+Studio, it's nonstandard, and your code won't run on standard systems.
+
+Get CodeBlocks installed on your box before the semester starts.
+
+Read the Introduction and Chapter 1 completely before the semester starts.
+
+Read the Course Syllabus completely before the semester starts.  It's the
+contract under which you are allowed in the course, so you should know
+what you're agreeing to.  It's over a thousand lines.  If that is a
+deterrant to you, you don't want to get involved with programming,
+since we read documentation non-stop, and like it.
+
+If you are a poor reader, get that fixed at the Mesa Bridging Lab before
+it destroys you.  If reading ANYTHING is tiresome or difficult, that
+is what it MEANS to have a literacy problem.  Scrap your ego and
+get it fixed.  It will ruin your life.
+
+Before you ask questions, make sure you've read the Syllabus and the
+materials for that week.  If the question has already been answered
+there, the instructor is not going to be your gopher.  People who do
+well in this profession know how to read, as well as how to do their
+own chores.
+

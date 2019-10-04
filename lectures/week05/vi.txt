@@ -1,0 +1,251 @@
+IX.    CHAPTER 7 TEXT EDITING WITH VI, EMACS AND SED.	
+Chapter 7 Text Editing with vi, EMACS and sed.  
+Page 169.
+				
+Vi is MODAL.  It starts in Command Mode.  i or a causes
+it to enter Insert Mode.
+Esc resumes Command Mode.
+ESC:q to quit.
+Create a file to edit with ls and redirection:
+$ ls -l / > demo
+$ vi demo
+Practice hjkl movement commands.
+Practice ^F, ^B, ^U and ^D page movement commands.
+Insert mode: I, a, o, O.  
+o inserts a blank line below the line you're on and moves there.
+O does the same thing, but on the line above the one you're on.
+Commands for the vi editor.
+
+Some advanced timesavers:
+
+--------
+vi editing multiple files: vi file1 file2 file3
+write one file change to next:
+:w
+:n
+
+Moving text from one file to another:
+vi file1
+(edit)
+"f44Y  (copy 44 lines to buffer f
+:w
+:e newfile
+"fP  insert the 44 lines into newfile.
+
+--------
+
+Simple vi command summary:
+Object			Change	Delete		Copy
+
+1 word			cw		dw		yw
+2 words, not		2cw or c2w	2dw or d2w	2yw or y2w
+counting punct
+3 words back		3cb or c3b	3db or d3b	3yb or y3b
+1 line			cc		dd		yy or Y
+to end of line		c$ or C		d$ or D	y$
+to beg of line		c0		d0		y0
+single char		r		x or X		yl or yh
+five chars		5s		5x		5yl
+cursor to top		cH		dH		yH
+to bottom		cL		dL		yL
+to next line		c+		d+		y+
+to column 5		c5|		d5|		y5|
+2d sentence		2c)		2d)		2y)
+prev.paragraph	c{		d{		y{
+to pattern		c/pattern	d/pattern	y/pattern
+next pattern		cn		dn		yn
+end of file		cG		dG		yG
+line 13			c13G		d13G		y13G
+
+Movement				Commands
+
+ldur					h, j, k, l
+forward by word			w or W
+backward by word			b or B
+to end of line				$
+to beg of line				0 or ^
+
+Other ops
+paste text from buffer			p or P
+no save, quit file			:q!
+
+Movement by screens:
+^f	scroll forward one screen
+^b	scroll backward one screen
+^d	scroll forward one-half screen
+^u	scroll backward one-half screen
+
+Re-position screen but leave cursor on the current line:
+z RETURN	Move current line to top of screen
+z .		Move current line to center of screen
+z -		Move current line to bottom of screen
+
+Movement within a screen
+
+H		cursor to top left (home) position
+M		cursor to middle line
+L		cursor to last line
+RETURN	first character of next line
++		first character of next line
+-		first character of previous line
+9|		move to column 9
+(		beginning of previous sentence
+) 		beginning of next sentence
+{		beginning of previous paragraph
+}		beginning of next paragraph
+
+Searching
+
+/pattern	move to next occurrence of pattern
+?pattern	move to previous occurrence of pattern
+n		repeat search in same direction
+N		repeat search in opposite direction
+/		repeat forward
+?		repeat backward
+
+If you don't want the search to "wrap" back to the start
+of the file, do  :set nowrapscan
+
+Read another file into the current position in this file
+:r filename
+
+Search-and-replace commands.
+Print current line number and total lines in file: Control-G
+.				current line
+0				end of file
+$				end of file
++20				next 20 lines
+%				all lines in file
+:/pattern/d		delete next line containing pattern
+:s/old/new/		replace first occurrance on this line of old with new
+:s/old/new/g		replace first occurrance on this line of old with new
+:50,100s/old/new/g	do likewise for lines 50-100
+:1,$s/old/new/g	do likewise for entire document
+:%s/old/new/g		same thing, since % means 1,$
+:%s/old/new/gc	global replacement with confirm
+			y RETURN means yes RETURN means no.
+
+:map command
+
+ESC :map keystroke command-line
+
+Surround the current word with quotes:
+
+ESC :map ^V^ai"^VESCea"ESC
+
+"Map the following to control-a:
+insert a pair of double quotes at present position,
+press ESC press e to go to end of word, append a double-quote, re-enter command mode with ESC".
+
+
+alternatively: use .exrc file to perminently customize vi.
+
+:abbreviate command
+
+ESC : abbreviate teh Thomas E. Harrisburg
+
+
+Movement by line number.
+To turn on line numbers do    :set nu
+To turn off line numbers do   :set nonu
+
+nG		go to line n
+``		(two backquotes) return to starting place before G
+''		(two apostrophies) return to 0 on the starting line.
+
+
+!! replace current line with a Unix command
+!} replace current paragraph with the results of piping it through a Unix command
+
+
+
+Buffers
+The last 9 deleted lines are stored in buffers "1 - "9.
+To recover the 2nd to last deletion type "2p
+
+If you want to "step through" the deleted buffers undoing each paste
+command, try:
+"1pu.u.u  and so on.
+
+You can copy text into NAMED buffers a-z.
+
+"dY or "dyy		yank current line into buffer d
+"a7yy			yank next seven lines into buffer a
+"x19dd			cut next 19 lines into buffer x
+"dP			paste buffer d before cursor
+"ap			paste buffer a after cursor
+
+If you specify the buffer name with a CAPITAL LETTER, the text you
+cut or copy will be APPENDED to the text already in that buffer.
+
+Bookmarks:
+
+mc				create a bookmark HERE called c
+'c				(apostrophie c) go to line containing bookmark c
+`c				go to character marked c
+``				return to starting place
+''				return to starting line
+
+Saving part of a file:
+
+:230,$w newname		save line230 to EOF to file newname
+:.,60w newname		save from current line to line 60 as newname
+:.,+60w newname		save the next 60 lines as newname
+
+Shell to UNIX: !
+Chapter 7 - cont'd
+--------
+
+sed
+'stream editor'
+
+cat /etc/passwd | sed 's/ksh/The Korn Shell/ '
+who | sed 's/tty/Logged in on device: /'
+cat msg | sed 's/^/> /'
+
+In vi, when you're replying to another's message saved in a file, you can:
+
+!!cat file | sed 's/^/> /'
+
+sed commands:
+s	substitute
+d	sed "1,5 d" infile		; delete lines 1 through 5 from output stream
+i	sed '/maison/i\
+	insert this line
+	' infile
+					; insert  "insert this line" and a linefeed before line 						; with "maison" in it
+
+
+---------
+Convert man command > command.man to regular text:
+sed '
+	s/.^H//g
+	s/^[9//g
+	s/[sp\t]*//g
+(literal space or tab)
+	' filename
+---------
+
+
+The Vim editor is what we call "8-bit clean", that is, it can
+edit BINARY files, even load modules.  Of course, the user
+has to know what she's doing, but consider the xxd utility.
+
+xxd converts a file of binary to a hex dump format.  
+xxd -r (revert) makes it go back.
+
+So, exit a.out, and when the screen comes up, type:
+
+:%!xxd
+
+(for all this file, execute xxd on the contents.
+
+You'll see a dump.  You can edit either the hex or the ascii.
+
+Then, from command mode vi,
+
+:%!xxd -r
+
+Save file.
+
+Be careful, but it does work.

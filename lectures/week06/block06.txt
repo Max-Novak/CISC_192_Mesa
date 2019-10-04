@@ -1,0 +1,200 @@
+Week06 Creating Functions
+
+(and SCOPE!!)
+
+Functions pose several new concerns:  what happens in a function STAYS
+in the function.  So getting data into and out of functions involves
+choices.
+
+In the early days, all variables were global.  That caused many bugs.
+
+Functions have argument lists which can pass otherwise inaccessible data
+into a function.
+
+Functions can handle display themselves, or "return" a single value (or
+the address of an address array) when they complete.
+
+A little history: the original 'library functions` which were bundled
+with C are still important tools.
+
+The many declarations in ctype.h, stdlib.h, etc., are in active use
+because they are intended to be.  C++ lacks most of the fine-granularity
+tools we use to test characters, strings, etc.  
+
+A Function is:  a named block of code
+           which may receive arguments in its argument list
+           which may return a value of any legal C++ kind
+
+Everything we do of any significance uses functions.
+
+Functions are broken down in this course by what they're used for.
+
+Char functions test characters:
+
+       int isalnum(int c);
+       int isalpha(int c);
+       int isascii(int c);
+       int isblank(int c);
+       int iscntrl(int c);
+       int isdigit(int c);
+       int isgraph(int c);
+       int islower(int c);
+       int isprint(int c);
+       int ispunct(int c);
+       int isspace(int c);
+       int isupper(int c);
+       int isxdigit(int c);
+
+
+"Str" functions manipulate arrays of char ("cstrings"):
+Possible confusion here arises from the old manual docs which address
+CString arrays.  It's easy to remember: if it's a function outside
+a string object, it's for CStrings.  String OBJECTS carry their own
+class methods.
+
+Since C isn't "OOP" and it's not possible to "overload" functions or
+operators, you can never do: cstring1 = cstring2.
+
+That is really saying: "The address of char array one is set equal
+to the address of char array two.  These are address constants,
+and were set by the compiler, so you can't assign to them.
+
+Instead, we pass addresses to the C functions and they do the 
+editing of the contents of the char arrays ("CStrings") .
+
+NAME
+       strcpy, strncpy - copy a string
+
+       SYNOPSIS
+       #include <string.h>
+       char *strcpy(char *dest, const char *src);
+       char *strncpy(char *dest, const char *src, size_t n);
+
+------------------------------------------------------------------------------
+Many of the older C functions still have not been surpassed
+by the newer C++ approaches, particularly regarding file I/O:
+
+NAME
+       printf, fprintf, sprintf, snprintf, vprintf, vfprintf, vsprintf, vsnprintf - formatted output conversion
+
+SYNOPSIS
+       #include <stdio.h>
+
+       int printf(const char *format, ...);
+       int fprintf(FILE *stream, const char *format, ...);
+       int sprintf(char *str, const char *format, ...);
+       int snprintf(char *str, size_t size, const char *format, ...);
+
+       #include <stdarg.h>
+
+       int vprintf(const char *format, va_list ap);
+       int vfprintf(FILE *stream, const char *format, va_list ap);
+       int vsprintf(char *str, const char *format, va_list ap);
+       int vsnprintf(char *str, size_t size, const char *format, va_list ap);
+
+   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+
+       snprintf(), vsnprintf():
+           _BSD_SOURCE || _XOPEN_SOURCE >= 500 || _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L;
+           or cc -std=c99
+
+DESCRIPTION
+       The  functions in the printf() family produce
+       output according to a format as described below.
+       The functions printf() and vprintf() write output
+       to stdout, the standard output stream; fprintf()
+       and vfprintf() write output to the  given  output
+       stream;  sprintf(), snprintf(), vsprintf() and
+       vsnprintf() write to the character string str.
+
+       The functions snprintf() and vsnprintf() write at
+       most size bytes (including the terminating null byte
+       ('\0')) to str.
+
+       The  functions  vprintf(),  vfprintf(),  vsprintf(),
+       vsnprintf()  are  equivalent  to the functions
+       printf(), fprintf(), sprintf(), snprintf(),
+       respectively, except that they are called with a
+       va_list instead of a variable number of arguments.
+       These functions  do not call the va_end macro.
+       Because they invoke the va_arg macro, the value of
+       ap is undefined after the call.  See stdarg(3).
+
+       These  eight  functions  write the output under
+       the control of a format string that specifies how
+       subsequent arguments (or arguments accessed via the
+       variable-length argument facilities of stdarg(3))
+       are converted for output.
+
+------------------------------------------------------------------------------
+
+Besides the greater versatility and control of many C
+Std Library functions, most of the "daughter" languages
+such as Java, PHP, awk, PERL, etc., use these approaches.
+Stream objects have proven themselves to be poor when
+writing "non-serialized" data.  As is inevitably the case,
+an expert programmer must master all of these techniques.
+No real-world enterprise re-writes their code just to be
+fashionable, so you need to be able to maintain and extend
+code from any time in the history of the C family.
+
+
+=======
+
+More modern concernes:
+
+Functions haven't changed in how we create them.
+
+They become better organized by the use of Function
+Overloading (Polymorphism).
+
+They have the capacity now of being written to use "default" arguments.
+
+Bear in mind that many C++ programmers spend their careers
+creating specialzed functions for other languages like
+Visual Basic, or for industries like Game Design
+
+One of the most sophisticated kinds of functions is the
+Recursive Function.  Programmers with some LISP experience
+tend to do well in this area.
+
+Functions aren't part of the C++ language.
+The Compiler doesn't recognize them.
+Therefore, the compiler must know how a function uses the
+Stack before it can generate code for the function.
+
+There are two ways to insure this: define all functions higher 
+in the program than they are called.
+
+Or declare functions using Function Prototypes.
+
+When we DECLARE something,we are just describing it to the compiler.
+When we DEFINE somethng, we allocate memory to hold it.
+
+
+Function prototypes:
+
+void cls (void) ;
+
+int sum3(int, int, int) ;
+
+There is no code, the parameters have no names, 
+
+Function Definition:
+
+void cls(void) 
+{
+	system("clear") ;
+}
+
+int sum3( int a, int b, int c)
+{
+	return a + b + c ;
+}
+
+Since a program cannot call a function before it knows
+how to generate code to use the stack, function prototypes
+are common.  Once the compiler has seen a prototype, and
+knows the number and type of arguments the function uses.
+
+

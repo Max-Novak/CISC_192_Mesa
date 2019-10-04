@@ -8,6 +8,5 @@
 wget select teacher notes
 
 ```
-wget --mirror --no-parent -e robots=off -O http://209.129.16.61/~hhaller/data/cisc
-192/week04/
+wget -e robots=off -r --no-parent /home/user/Desktop/MIT/ http://abc.tamu.edu/projects/tzivi/repository/revisions/2/raw/tzivi/
 ```

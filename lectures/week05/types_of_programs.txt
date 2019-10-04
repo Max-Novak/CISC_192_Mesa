@@ -1,0 +1,32 @@
+PROGRAM STRUCTURES
+
+Over the years, certain ways of writing C programs have withstood the
+test of time and circumstances, and the Unix (and DOS) operating
+systems have both shaped and been shaped by the thinking of
+programmers with rich experience in C.
+
+The most common type of C program is described in the file
+program_structure_filters.  The "Unix Philosophy" is to create many
+small tools which do one thing well, and to combine them with pipes,
+so it is possible to string many of these small tools together to do
+real work without the necessity of writing large custom programs.
+
+Other "standard" programs are:
+
+servers: these are programs which open a socket on the system and
+listen to the network for message traffic requesting services from
+them.  MYSQL, LDAP, Oracle, in fact, all network-accessable databases
+are such programs, along with secure-system tools like Secure Shell.
+
+clients: the other side of the server, they are specially-written
+programs to access the server, providing it the information it needs
+to function, while keeping the burden on the user to a minimum.
+
+daemons: these are programs which, like servers, run without being
+attached to any terminal or "tty".  They exist to perform routine
+system tasks, and generally are started at system boot-up, and run the
+entire time the system is active.  Mostly, they sleep, then at
+intervals, they wake up and check to see if there is work waiting for
+them.  If not, they sleep some more.  at, cron, and such fall into
+this category.
+

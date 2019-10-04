@@ -1,0 +1,134 @@
+LINUX SYSTEM ACCESS for students.
+
+A Server is a powerful computer with dozens or hundreds of users.
+
+Users have accounts, accounts have passwords.
+
+Servers are very hard to get into if you're not authorized.
+
+Buffy is a Linux Server.  Linux is an Operating System, much
+more powerful and secure than Windows, but free.  Most of the
+advanced nations of Europe and the Americas run most of their
+enterprises with some version of Linux.  We call it LAMP for
+"Linux operating System,
+Apache Web server
+Mariadb (was MySQL) Database manager
+PHP dynamic Web Page creation."
+
+Buffy is running SuSE Linux Leap 43.2
+
+We "log in" to Servers.  That means, from our local computer,
+run a terminal emulator, and with it, we reach across the internet and
+run commands on the Server as if we were in the room with it.
+
+How to log into Buffy: (209.129.16.61) using PUTTY.EXE
+terminal emulator program:
+
+To log into a server, you need a program which acts like a terminal, (a
+device connected to a Server, which displays what's happening on on the
+Server.)  Since they don't sell them any more, we use emulator PROGRAMS,
+and PUTTY.EXE is a popular one for Windows.  If you're calling a Linux/Unix
+system FROM ANOTHER Linux/Unix system, you don't need a terminal emulator.
+
+For instance, from the Macintosh Command Line, you just use the ssh command.
+
+This allows users to access the distant host using the CLI ("Command Line
+Interface.")
+
+Linux has a GUI ("Graphics User Interface") ALSO.  It is like Windows'
+Presentation Manager, but much more powerful and customizable.  Students
+who are going to serious 4-year schools will probably use Unix Servers,
+since most campuses use them.  At SDSU and UCSD, their Unix servers
+allow distant users to login using "X Windows" emulators...in other
+words, it's like logging into a Windows computer and still seeing the
+Graphic User Interface.  In Unix, that GUI is known as X (or X Windows).
+But that requires a powerful server.  Buffy isn't powerful enough,
+so we log into Buffy using the Command Line instead.
+
+Knowing Unix is an important ability if you want to be taken seriously
+in technical fields.
+
+HOW TO LOGIN
+
+1. Find out your login name and password.  
+
+	Your instructor will tell you what your oryxname or maxname is,
+	and what your starting password is.
+
+2. Find the file "PUTTY.EXE" on the Windows Desktop, or else go to the
+	class webpage and download it to your computer.  Double-click to run it.
+	https://www.ssh.com/ssh/putty/ is the home page If you
+	want the latest version. There are tutorials and other articles, otherwise,
+	read system_access.txt and software.development.under.linux.txt.
+
+(If you don't see it, go to
+http://209.129.16.61/~hhaller/data/cisc192/PUTTY.EXE and click-drag
+PUTTY.EXE to your desk top.)
+
+Double Click to start it.  The "Putty Configuration" screen displays.
+
+	When it comes up enter the IP address: 
+
+	209.129.16.61
+
+	in the appropriate box (read the screen)
+
+	click the "SSH" radio button (not telnet nor rlogin, etc.,)
+
+	On the left side of the page, go down the function tree and click "SSH"
+
+	To use PUTTY, you'll need to configure it to use Secure Shell Protocol "2 only"
+	select radio button "2 only" for Protocol.
+
+	Click "Session" to return to the top page, and enter
+	a name like "Buffy" in the space provided.
+
+Click OK.  
+
+A terminal window will open, light chars on black,  and you will see:
+
+"login:" 
+
+Enter the name you were assigned: oryx01, max87, or whatever.
+
+A "password:" prompt will appear.  
+
+Type in the password your instructor gave you.  AS YOU TYPE, YOUR
+KEYSTROKES WILL NOT BE DISPLAYED. Use one finger. Backspace doesn't work.
+This is a security safeguard.
+
+If you log in correctly, the screen should display the welcome screen
+and the Message of the Day.
+
+If it doesn't log you on, you're making a mistake.  Do it over carefully.
+
+You will see a dollar-sign prompt.  The system is waiting for you to
+type commands. 
+
+=====================================
+
+OK, that's how to do it, now let's do it:
+
+Using your account and password, log into Buffy.  She lives at: 209.129.16.61.
+Once you're there, you can use Linux to learn about Linux:
+
+For a general tour of Unix commands, at the command prompt, try: 
+
+	man intro  
+
+	and press ENTER.  (Always press ENTER to run a command.)
+
+(man is the Unix Programmer's Manual online.)
+
+(Press space to go forward a page, q to quit, / to search.
+
+Try some commands like:
+whoami
+who
+w
+finger hhaller
+finger root
+last | more                (press 'q' when you're done looking).
+
+
+

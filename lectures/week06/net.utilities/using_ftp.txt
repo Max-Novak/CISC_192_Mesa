@@ -1,0 +1,103 @@
+USING_FTP.txt
+
+(The PSFTP.EXE program is old and a bit cranky, but there is
+a copy in this directory you can use if you want to.  It's
+better to install all the PUTTY suite so you get PSCP.)
+
+Every minimum-wage office assistant in America knows how to send a
+fac and use a File Transfer Program to send files between computers.
+You need to be able to do the simple office stuff of being a programmer,
+so learn it here and now.
+
+You will be ftp'ing a file containing a program you wrote from where ever
+"here" is to your file directory on Buffy so it can be automatically
+collected to be graded.
+
+Programmer/Analysts are officers.  "Staff" Officers, but Officers
+nonetheless. Officers don't go begging the low-level enlisted and temps
+to do simple tasks for them...not if they want to retain respect (and
+employment.)
+
+(Oh, you should be able to type, also.  If you have to look at
+the keys, you're going to ruin your back and neck.  You can learn to
+type by taking heyboarding at Mesa, (I did.)  Or, you can buy
+Mavis Beacon Teaches Typing.  But whatever you do, learn
+the basic skills.  Don't be a karate-ka who can't tie their uniform
+belt, or kick without falling down.  You are a complete package.
+Take care it's a valuable one.)  Confident and capable beats
+goofy and iggerant every time.
+
+Read the files in this directory, supplement with Web searches
+when necessary.
+
+using_ftp:
+
+TRANSFERRING FILES TO AND FROM A SERVER USING FTP, (PSCP.EXE), (PSFTP.EXE)
+OR Unix/Mac's SCP (scp) or WINSCP.EXE from the Windows CMD line.
+
+You will use one or another FTP (file transfer protocol) program
+intensively your whole working life.
+
+If you are using a Windows PC:
+When you are ready to upload the program file to the Mesa system, you
+can use the "pscp" or "psftp.exe" program to get files from the local
+system to Mesa:
+
+Be sure you've put the USB drive in the USB port,
+
+From Firefox, navigate to 
+
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+Download and install the whole PUTTY "suite".  That will give you PSCP.EXE, too.
+
+Get it installed in your PATH on Windows, have it put icons for Putty and Pscp
+on your desktop.  
+
+(.EXE means the file is a Windows program.  You can only run it on WINDOWS.
+
+Click on START and type CMD  a CLI window will pop up.
+
+Change directory to where you getnum.cpp file is saved on your machine.
+(Probably your thumb drive). Assume you saved it on F:\guessnum\main.cpp
+
+(Code::Blocks usually defaults to "main.cpp" as the name of the program.)
+
+a command-window will pop up, type:
+
+F:
+CD guessnum
+pscp main.cpp oryx12@209.129.16.61:asst0  <return>
+
+It'll ask for your password.  Type it in.  What you type
+will NOT be echoed to the screen for obvious reasons.
+
+wait until the transfer is complete, then type: quit
+
+(You can reverse the process and copy files to from Buffy down
+to your computer:
+
+
+pscp oryx12@209.129.16.61:asst0/main.cpp .   <enter>
+
+It'll ask for your password, and won't echo it.
+
+MOST FTP programs can only copy from or to the CURRENT WINDOWS 
+directory.  This isn't a flaw in the transfer code, it's just
+part of how spavined Windows is, still.
+
+-------------------------
+
+If you're on a system with a Unix command line, (which includes
+Macintosh computers' Terminal Window,) you may:
+copy files to or from your directory on the distance system:
+
+scp myacct@distant.com:filewanted .
+or:
+scp ./filetosend myacct@distant.com:
+
+(Note for those who cannot deal with abstract or
+generalized ideas: you won't type exactly what is printed
+above, they are generalized versions.  I expect you
+to know where your files are and what they are named.
+If this doesn't make any sense to you, talk to me.)

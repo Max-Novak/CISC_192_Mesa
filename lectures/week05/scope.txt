@@ -1,0 +1,337 @@
+I'll mention references, then ignore them until we need them.
+
+They're another artifact of Windows' programming needs,
+and we don't need them yet.  If you can use pointers: do so.
+If you can't: get there.  But don't rely on dull tools like
+references.  They have a bad way of creating ambiguity in
+code when you read it, as I'll explain later.
+
+You preceed a variable name with an asterisk, it's a pointer,
+
+int i ;
+int * ip ;
+
+    preceed a variable name with an ampersand, it's a reference.
+int i, &ir = i ;
+
+References are like pointers which can only be aimed when
+created, and never changed where they point:
+
+---------------------------------
+
+NOW we have the tools to understand the biggest part of the
+language so far: SCOPE.
+
+The SCOPE of a variable or a function 
+IS THE SPACE IN THE PROGRAM WHERE THE VARIABLE OR PROJECT MAY BE SEEN.
+
+Now, variables are usually declared inside a function.
+But they may be declared outside any function (they are then
+"global").
+
+So far, we've done examples where the whole program is inside one file:
+
+asst1.cpp  contains all of Assignment 1, for instance.
+
+But, if you look at the left of CodeBlocks (the Solution Explorer pane)
+you'll see that the project may contain several source files.
+
+Look at this file:
+
+/*-----------------------------------------------------------------
+*	scope001.cpp
+We declare the print_array() function (it's in another file)
+We assign a value to size from main(), even though it's global.
+-----------------------------------------------------------------*/
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std ;
+
+void print_array(int []) ;
+
+int size ;  // global variable
+
+int main (int argc, char *argv[], char **env)
+{
+	int a[10] ; 
+
+	size = 10 ;
+	size = 10 ;
+	print_array(a) ;
+	return EXIT_SUCCESS ;
+} // main ends
+
+
+Now look at the next file:
+
+
+/*-----------------------------------------------------------------
+*	scope001b.cpp
+We just have the code for a function, and the function header
+identifies it, while we define it by writing code.  Not prop.
+
+BUT: we use "size" from outside any function in the other file.
+main() isn't passing size to print_array, it has to pull it
+out of the air, and it can't.
+
+So we have to add the commented-out line:
+
+	//extern int size ;
+This is a DECLARATION only, not a definition.  We're just
+telling the Compiler that the Linker will take care of
+finding "size" for us.  The "extern" declaration points
+the linker where it needs to look after the files are compiled.
+-----------------------------------------------------------------*/
+#include <iostream>
+#include <iomanip>
+
+using namespace std ;
+
+void print_array (int array[])
+{
+	//extern int size ;
+	for (int i = 0 ; i < size ; ++i)
+		cout << array[i] << endl ;
+
+} // main ends
+
+
+SO, HOW DO WE BUILD THIS PROGRAM?
+
+g++ -c scope001.cpp
+g++ -c scope001b.cpp
+g++ *.o -o scope001.exe
+
+Then run: scope001.exe
+
+...or we could use a Makefile or CodeBlocks' project minder.
+The point is, we have to get everything compiled, and keep the
+compiler from complaining about a problem it can't solve.  When
+we use the "extern" declaration, we're reassuring the compiler
+that the Linker will handle it.
+
+Be sure you grasp this.  In this example, "size" is a global variable,
+and can be referred to from any code in the program.
+
+GLOBAL VARIABLES ARE A LOUSY, PRIMITIVE WAY TO PROGRAM. They breed errors.
+But sometimes, you are working for the fastest communication between
+functions you can get, but you still want to contain the globals so
+the rest of the project can't see them.
+
+
+Main.cpp:
+
+int main() 
+{
+	size = 12 ;
+	something ;
+} 
+
+Bubsort.cpp:
+
+static int size;
+
+(function code)
+
+When you call a global variable "static" that makes it a
+"static global) and the ONLY PLACE IT CAN BE SEEN IS INSIDE
+THAT SOURCE CODE FILE.
+
+So in this case, only the functions in Bubsort.cpp can
+see size.  The functions in Main.cpp cannot.
+
+You can also do this with functions: a function that is
+static void x() or static int sum() can only be seen by
+its file mates.
+
+
+---------------------------------
+FUNCTIONS
+
+type functionname(argument list) ;   // a function "call" or "run"
+
+unsigned int sum ( int a , int b , int c) 
+(
+	return a + b + c ;
+}
+
+cout << sum ( 6, 89, 432) << endl ;
+
+---------------------------------
+
+C and C++ Standard Library Header Files (like stdio.h and
+iostream) are SOURCE CODE FILES that declare and define a
+lot of variables, functions, macros, etc., that are useful
+in programming.
+
+Storage Classes are ways of telling the compiler about the
+life span of a variable, and how it should be stored in the
+computer's hardware.
+
+Options are: auto, register, extern, volatile, static.
+
+The default is auto for "automatic" in which the system
+uses a "standard" form of storage.
+
+	auto (the default):  Variables in functions go away when
+the function ends.
+
+	register  A request the compiler doesn't have to honor.
+Asks for a super-fast variable with no address.  Used
+to make loops run faster.  You may not use the "address of"
+(&) operator with a register variable.
+
+	extern Doesn't DEFINE a variable, just tells the
+compiler not to post an error, the variable is defined
+outside the current scope, let the linker find it.
+
+	static (as in static int x = 0 ; )
+Variables in functions are only initialized the first
+time, don't go away, retain their values between function
+calls.
+
+BEAR IN MIND that generally you won't use any of the
+above.  Most programs use ordinary auto variables to
+solve ordinary problems.  Only large and complex code
+requires messing with storage classes.
+
+SCOPE: where a variable or function may be "seen".  If a
+variable hasn't been "defined" (allocated and named) or
+"declared" (an external declaration affirmed locally) in the
+current "scope", any attempt to use its name will result in
+an error.
+
+Read: <A
+HREF="http://209.129.16.61/~hhaller/data/cisc192/modules/scoping_of_variables">scoping_of_variables</A>
+Text: Chapter  5
+
+Old languages made all variables "GLOBAL", i.e.,
+visible everywhere.  This caused bugs.  Object Oriented
+Programs limit many variables to inside a "black box"
+("Encapsulation").  If other programmers can't SEE
+the variables, they can't MESS UP the variables.  It is
+possible to have global variables in C++, you define them
+outside any function.
+
+Usually, it's poor practice, if it's done from laziness,
+VERY poor.
+
+Global variables are a shortcut.  The state of mind that
+takes shortcuts produces lousy code, because it starts
+out lazy, and rarely reads well enough to pay attention
+to the good reasons why it should learn what it's doing.
+
+Clear thought and clean design come from proceeding
+slowly, and really understanding what you are trying to do.
+One lesson history teaches us: using shortcuts in any field
+of engineering gets people killed.  Even in programming.
+
+Do a Web search on "Therac-25" for examples: many human
+beings killed due to system errors resulting from flawed
+design in a machine which "couldn't" hurt anybody.
+
+	volatile:  One opposite of const. 
+	
+The other, "automatic" is the default kind of
+variable.  A VARIABLE, by definition, "varies".
+Volatile variables are so declared in programs with
+multiple "threads".  
+
+Trying to explain _that_ this early would give us both a
+headache, but if I must: In thread-based multiprogramming,
+it warns the compiler that a variable may change even
+though no code in the current scope touched it. Warns
+the compiler not to make any assumptions about it, or to
+optimize it. If that makes any sense to you, you should
+probably be teaching this course:).  Don't worry about it.
+
+Look at the definitions of the STACK and the HEAP.
+
+Stacks are built into the CPU hardware, and are very powerful
+data structures.  The system stack is where arguments are
+passed to functions.  We also implement stacks in software,
+since they are powerful ways to control programs and data.
+You will see them a lot in Data Structures and Assembly
+Language classes.  All you need to know is, if you allocate
+lots of array variables, and have many cases where functions
+call themselves, the System Stack may crash into the System
+Heap, you will be out of memory, and the program will abort.
+
+---------------
+Narrative:
+
+JJ scratched her cheek where a wisp of hair was brushing her in
+the breeze from the window.
+
+She read:
+
+For this week's thought experiment, think about this:
+have a program allocate an int array based on the runtime
+parm in argv[1]. Sample run:  a.out 5
+
+Allocate both an int array a[size] and an array of
+integer pointers int * ap[size];
+
+Print the contents of the array, they should be random.
+
+Use a for() loop to buzz through ap[] linking each pointer
+to the corresponding member of a[].  Now print a[] by
+referencing it using ap[].
+
+Now, LEAVING a[] ALONE, SORT THE POINTERS IN ap[], so that
+referring to a[] through ap[] you have a sorted listing
+of the array, even though it's unchanged.
+
+Shouldn't take more than ten minutes, an hour if you aren't
+having fun.  It's excellent practice at using pointers.
+
+If you're not interested in really being a programmer, you
+can just read the solution in this directory, but it likely
+won't make sense to anybody who ISN'T a real programmer.
+
+JJ rested her chin on her fist and thought.  Huh.
+She could "sort" a bunch of data into as many different
+orders as she wanted to create, aim, and sort pointers for.
+
+Hell!  She sat bolt upright.  She could have data in a
+huge array, and have pointer arrays which only pointed to
+some of the big array's data: like only the people in a
+given zip code, or only the ones marked for arrest, or....
+
+She noticed Hog looking at her.  "Y'know, this pointer
+array thing would let you store all the data together,
+but treat it as several arrays in one."  As she spoke,
+Hog's expression changed.  He nodded, then hesitated,
+"How you gonna know how many of each subgroup there are?
+If you have a million drivers license numbers, but an array
+of people who...oh, who can't drive at night, maybe their
+eyes'r bad, y'know?"
+
+"Yeah?"
+
+"And you use the night-blind pointer array, where you
+gonna store how many pointers there are in it?"
+
+"Well, we could store pointers in vectors...vectors can
+tell you their .lencth()...."
+
+"True."
+
+All the demos are corrected and work (scope001.cpp and
+scope001b.cpp needed to have extern pointers to each
+others' variables and functions.)
+
+Try playing with the primes routine, see what it suggests."
+
+Then try looking at/running JESERAC.C.  I wrote this on my
+first IBM PC, after an idea from Arthur C. Clarke's "The
+City and the Stars".  It paints patterns of primes for you.
+
+----------
+</pre>
+</body>
+</html>
+
+

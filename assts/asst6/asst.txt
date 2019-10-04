@@ -1,0 +1,59 @@
+Array_Sort
+
+Write a single-file C/C++ program that: reads SIZE from the command line
+using atoi(argv[1])
+
+Creates an array of SIZE integers.
+using int *array ; array = new int[limit] 
+
+Fills the array with random numbers.
+using array[i] = rand() % maxval
+
+Displays the unsorted array contents, using a
+separate array-printing function and calling
+it with the array and its size in the argument list).
+
+like:  sortArray(char * array, int SIZE) ;
+
+Sorts the array into ascending order using simple Bubble Sort.
+using nested for() loops
+
+Displays the sorted array contents
+
+For this assignment, you will need: 
+
+for (), int rand(), The logic of Bubble Sort:
+
+Outer forloop 
+      inner forloop 
+	    if array[inner] > array[inner + 1] then
+	       swap array[inner] and array[inner + 1]
+
+You may not use the standard swap() function, instead, code your own
+intswap(int *, int*) function, or, you can code it this way within the
+Bubble Sort:
+
+Sample run:
+
+a.out 3
+a[1] = 671
+a[2] = 859
+a[3] = 518
+
+a[1] = 518
+a[2] = 671
+a[3] = 859
+
+
+All contents copyright (C) T.E.H., all rights reserved.  None of this
+text may be displayed or stored on any public access or private access
+system without the written consent of the author.
+
+
+Guru Challenge:
+
+Since arrays aren't objects, if you "pass" one to a function, you kinda
+have to include another int holding the number of elements in the array.
+
+Can you come up with a different way of using arrays so you only need
+to pass the array?  Be creative.

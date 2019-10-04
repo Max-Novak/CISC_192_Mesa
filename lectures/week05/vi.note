@@ -1,0 +1,23 @@
+The Vim editor is what we call "8-bit clean", that is, it can
+edit BINARY files, even load modules.  Of course, the user
+has to know what she's doing, but consider the xxd utility.
+
+xxd converts a file of binary to a hex dump format.  
+xxd -r (revert) makes it go back.
+
+So, edit a.out, and when the screen comes up, type:
+
+:%!xxd
+
+(For all this file, execute xxd on the contents, changing
+binary data into an ASCII print of a hex dump.)
+
+You'll see a dump.  You can edit either the hex or the ascii.
+
+Then, from command mode vi,
+
+:%!xxd -r
+
+Save file.
+
+Be careful, but it does work.

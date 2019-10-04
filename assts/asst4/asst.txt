@@ -1,0 +1,34 @@
+SHERPINSKIJ01 and the ncurses library.
+
+This is similar to guessnum, in that you don't have to do much programming.
+I wanted to introduce the NCurses library, which is the easy and quick way
+to write C++ programs which have control of the screen.
+
+Something really bad happened between the days when everyone was using Apples
+and Commodores, and the wide acceptance of Windows.  Early computers made it
+easy for the owner to draw designs using simle BASIC.  But today, there is a
+high curb in the way of anyone who wants to do that.  I've played with Python,
+and it tries, and does pretty well, but the "main language" of application and
+system design should not lack a good set of tools for easy graphics.
+
+And it doesn't.  But programmers who only know Windows have limited visions
+of the future.  Microsoft == Idiocracy in so many ways.
+
+One thing I've noticed teaching C/C++, is that very few textbook writers
+seem aware of anything which hasn't been sold aggressively to  Windows
+programmers.  That's like a car mechanic only being really expert at
+fixing tanker trucks.
+
+So, log into Buffy, cd to your asst4 directory, start nano asst4.cpp,
+and  enter the code for sherpinskij01.c, and compile it with:
+
+cc -o sherp sherpinskij01.c -lncurses
+
+run it with: ./sherp .
+
+
+There is a lot in this program.  Students who want to experiment with curses
+will find a few other programs in this directory.  Help yourself.  Just remember
+to run them on a Linux system, and add the "-lncurses" linker command, so the
+binary has the curses library compiled in.
+

@@ -1,0 +1,169 @@
+Come up with a single-step shift algorithm which 1. adds
+a shift value (from the command line) to each letter,
+THEN 2. corrects the sum back to between 'a' and 'z'.
+
+alpha_shifts.txt	-	alphabetic shifts and how they are
+accomplished with ASCII chars.
+For students who have no systems background, all text is stored as 8-bit ints.
+
+Here is the scheme, known as ASCII:
+(American Standard Code for Information Interchange)
+Run the ascii command.
+065: A   066: B   067: C   068: D   069: E   070: F   071: G   072: H
+073: I   074: J   075: K   076: L   077: M   078: N   079: O   080: P
+081: Q   082: R   083: S   084: T   085: U   086: V   087: W   088: X
+089: Y   090: Z   097: a   098: b   099: c   100: d   101: e   102: f
+103: g   104: h   105: i   106: j   107: k   108: l   109: m   110: n
+111: o   112: p   113: q   114: r   115: s   116: t   117: u   118: v
+119: w   120: x   121: y   122: z
+-----------------------------------------------------------------*/
+	suppose you want to shift letters 13 positions forward in 
+	the alphabet, and you haven't thought very deeply about how
+	you have to do it.
+	Since EVERY LETTER IS REALLY A NUMBER...
+	You think you're going to shift all your letters forward by adding 13 
+	to them.
+
+	BUT: what if the original letter is 'n' or greater?  You fall off
+	the end of the alphabet!
+
+	Then you think you're going to subtract all multiples of 26 from it
+	by modding it with 26?  But the alphabet doesn't start with 0 for 'A',
+	it starts with 65 for 'A' and 97 for 'a'.  
+
+	(LIVE with it, it's been that way since the 1800s teletype machines.
+	Since ASCII is older than your gran, you just have to learn it, it's
+	not going anywhere.)
+
+	So "zebra" is stored as: 122 101  98 114  97
+
+	you shift it by 13:      135 114 101 127 112
+	Which, as they sit, are: bad   r   e bad   p
+	bad: invalid char OR  non-printing
+
+	THIS IS FULL OF ERRORS.
+
+	The first character is higher than 127, so it's not a printable char.
+	If you store it in 8 bits, you'll get -121.
+
+	Since it's easy to overflow stored numbers (and lose information
+	from overflow) we can't use that simple addition method.
+
+	THE RIGHT WAY: MORE COMPLEX, REQUIRES MORE THOUGHT.
+
+	First, we must be sure we're manipulating a LETTER:
+
+	if (isalpha(c))
+
+	First we note the CASE of the char, 
+
+	if (isupper(c)) upper = true ; else upper = false ;
+
+	We then force it to be LOWERcase so we don't need two separate 
+	programs in one:
+
+	c = tolower(c) ;
+
+	Then we "normalize" ASCII characters to their position in the
+	alphabet, (0-25), by subtracting 'a' from the character.  
+
+	
+	'a' becomes 0 , 'z'  becomes 25.
+	97  becomes 0 ,  122 becomes 25
+
+	Then we add the shift value to the letter.  Then we immediately make
+	sure it is in the range 0-25.  If the original number was between
+	'a' and 'm', it will be, but if it was between 'n' and 'z', it
+	will be greater than 25, so we mod it with 26.	That "rotates"
+	the number, so if it fell off the end of the alphabet, it is
+	placed back between 0 and 25.
+
+	But 0-25 are NOT LETTERS, just their positions in the alphabet.  
+	(Re-run the "ascii" command again and
+	really look at the output.) NOTHING BELOW 32 IS PRINTABLE. Those
+	low values are "CONTROL CHARS" used for controlling a teletype, and,
+	nowdays, a computer screen. If you print it, it will send control
+	codes to your screen and probably screw it up.
+
+	So, once you've shifted the letter, you must restore ("de-normalize")
+	it to being a real ASCII char again, by adding 'a' to it.
+	
+	PROGRAM PSEUDOCODE:
+	The easiest way is to check each incoming char:
+	is it alphabetic?
+		is it lower case or upper?  (remember which)
+		(WE USE VARIABLES TO "REMEMBER")
+		force it to be lowercase
+		do the normalize/shift/denormalize operations
+		restore case
+		print
+	else
+		print the non-alphabetic char unchanged.
+
+	So
+	  z   e   b   r   a
+	122 101  98 114  97 becomes:
+	109 114 111 101 110 which is:
+	  m   r   o   e   n
+
+FOR THE CHEATERS:
+	There's some code out there which some students
+turn in every semester.  So consider this:
+
+If you turn in that stupid for-loop based shift, I'll
+know you cheated, and you won't be allowed a re-try.
+That program is the best example of how to program like a
+moron I've ever seen, and I'd rather you weren't exposed
+to it.  If you don't know what I'm referring to, GOOD.
+
+There are a lot of "homework helper" people eager for your
+money, and my feeling is: let them have it.  It takes a
+fool to spend money for the very files I'm giving you.
+Those kind of people are no threat to my industry.
+They'll get into the first interview, and 15 minutes later
+walk out a foot shorter, humiliated.
+
+I see dozens of sites selling documents I've been using
+in this course for decades, which are still here.  There
+is an old adage, "A Fool and his Money are soon parted."
+So be it.
+
+If you're dealing with a "contractor" half the time,
+you won't know what you've done to yourself for at least
+ten years, maybe more...but you'll see that person again,
+when you have something to lose.  And they will take it
+from you.  The other half of the time, they will still
+think they're "good" people, so they'll take your money,
+give you code to turn it, and I'll give you a 0 because the
+code isn't as assigned.  They took your money, but you're
+a cheat, and you got caught, so they can tell themselves
+they haven't set an incompetent programmer/analyst loose on
+the industry. And they'll be good enough at fast-talking
+you that you'll probably do it AGAIN.  Let me know how
+many times they run it on you, maybe you'll set a record.
+
+If they give you code, you're cheating.  If they don't give
+you the code, but tell you what to write, they're giving
+you code.  If they don't give you code, and they don't tell
+you what to write down, then what are you paying them for?
+EVERY COLLEGE in the San Diego area has open computer
+labs, and you can show up and kick code around with the
+student-tutors for free.
+
+Those who have been sharing code are collaborating in
+their own failure, since they're all sharing the same
+really silly errors.  
+
+
+Silly Error #1: When the assignment says "stream" it
+doesn't mean "line".  When it says "use the waterpump"
+it MEANS it.  This program should be able to process a
+million pages of text as easily as a single word.  If your
+program reads a single line, you won't be allowed a retry.
+I can't force you to read the assignments, but I can try
+to make it worth your while.
+
+Silly Error #2: Don't add prompts or messages or other
+white noise to this program: they contaminate the output
+stream.  Restrict your creative impulses to working in
+your garden, OK?

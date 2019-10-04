@@ -1,0 +1,25 @@
+
+obtain the shift value from the command line or quit
+
+read the first character
+while not end of the inpt do:
+	if the char is alphabetic:
+		make it lower case
+		make it contain its place in the alphabet 
+		add the shift value to it
+		if it's fallen off the end of the alphabet, 
+			shift it back in
+		make it alphabetic again, instead of just it's place
+	end of the if
+	print the character
+	read the next character
+end loop: (check if we run it again)
+
+print a line feed
+quit
+
+
+NO PROMPTS
+NO EYEWASH
+Do not contaminate the output stream, because this output
+stream will be another program's input stream.

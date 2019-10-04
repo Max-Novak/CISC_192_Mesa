@@ -1,0 +1,137 @@
+Week05	Control Flow.
+
+We speak of "control flow" in a program as the path which execution
+follows through the code.
+
+The major ones have names, of course.
+
+1. "Sequential"
+The simplest form of control flow is Sequential:
+start
+	do this
+	do this
+	do this
+stop
+
+This is the most efficient pattern: no clock cycles are used up 
+with tests like if() or for() or while().
+
+2. "Branching Sequential"
+                   start
+                   do this
+						 do this
+						 test
+     option 1						 option 2
+	  do this                   do this
+	  do this                   do this
+	  stop                      stop
+
+3. "Loop"
+
+
+start
+	do this
+	do this
+(start of loop)
+		do this 
+		do this
+		do this
+		do this
+branch back to (start of loop)
+
+NOTE:  There are different kinds of loops, from predetermined
+(you know the number of reps before the program begins)
+to variable (the loop executes based on some external condition,
+either a computed limit, or an event like EndOfFile (.eof()).
+
+LOOPS: Definite number of reps: 
+
+for(;;)     // may never execute
+
+Indefinite number of reps:
+
+while()    // may never execute
+
+do         // WILL execute once at least
+..
+while () ;
+
+Read the chapter for an understanding of for(), do..while(), and while() loops.
+Also remember it is possible to create your own loops with any logical test
+and the goto command:
+
+int i ;
+STARTLABEL:	
+
+	cout << i << endl ;
+	i = i + 1 ;
+	if (i < 11)
+		goto STARTLABEL;
+-----
+
+forEach	this is only in C++, and got ported over from the newer
+stuff like scripting languages and Java.
+
+Some programmers only use the for(;;) loop.  It's a matter of taste, and
+what you think is beautiful.  ALL engineering can be beautiful, and
+efficient designs are USUALLY beautiful.  This isn't luck.
+
+The new ForEach construction.  This got ported over from languages like Java
+which also descended from C.
+
+It's the same kind of "list-based" for loop which the Unix command shell has.
+
+(But all compilers don't have it yet.) 
+
+Loop interruptions:
+
+	continue	-	stops the CURRENT ITERATION of the loop, performs end-loop
+		processing (incrimentation, testing) and may or may not resume, depending.
+
+	break	-	stops the loop, drops to the program code which comes after the loop.
+
+
+
+---------------
+
+switch()
+
+The switch is just a way of expressing a chain of if() logic in a more
+readable form.  switch() is not faster than if(), it's just neater and
+contributes to good organization.
+
+
+
+EXAMPLE CODE:
+Most students have never seen a "processor bound algorithym".  Most of the 
+programs you see are "I/O Bound"...it they're slow, it's because the
+bottleneck is getting input.  
+
+The perfect.cpp program is a horse of another color: it runs slowly because 
+great amounts of computation are required to generate single lines of output.
+
+You can compile it:   g++ -o perfect perfect.cpp
+then run it:  perfect
+
+The screen will fill and scroll too fast to read.  Control-C your way
+out, and then run it in alternate mode:
+
+perfect -v
+
+Since you've seen how much computation is going on, remember it while you
+watch the program search for the next perfect number.  Think it over.
+
+If you waited until the screen filled up, you'd be ready to retire before
+it happened.
+
+[A Perfect Number (an "aliquot prime") is a number whose formal factors
+sum to the number.  Consider 6:
+
+1 * 2 * 3 == 6 == 1 + 2 + 3
+
+So 6 is perfect.  If the factors sum to a larger number, it's Abundant,
+if they sum to a smaller number, it's Deficient.
+
+If you want more, look up "Number Theory."
+
+

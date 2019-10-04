@@ -1,0 +1,59 @@
+/* ----------------------------------------------------------
+	shift13.hla.pseudocode	-	a standard input loop doing char-by-char
+	input from stdin, terminates when the system generates an
+	eof or the typist presses ^D.
+	T Mon Jul 17 17:53:10 PDT 2017
+	As you work:
+		1. GET IT RUNNING
+		2. MAKE IT CORRECT
+		3. ENJOY IT
+		4. THEN MAKE IT LOWER-LEVEL (cmp for if, etc) ;
+I don't think I'm giving away the store, this is still unexplored territory.
+But we ought to be able to get this done in class.
+---------------------------------------------------------- */ 
+program shift13 ;
+#include ("stdlib.hhf") 
+#include ("chars.hhf") 
+#include ("stdin.hhf") 
+var c : char ;
+    h : qword; // standard input stdin.handle() ; mv (EAX, h) ;
+
+begin shift13  ;
+try
+	// priming read
+	stdin.read( c, 1) ;
+	// input loop
+	for....
+		//handle uppercase letters
+		if (c in 'A' .. 'Z') then
+			add (32,....  // reduce to lower case
+		endif ;
+		//handle lowercase letters
+		if (c in 'a' .. 'z') then
+			// clear ax
+			// move c into al (byte into byte: consistent sizes
+			// subtract the value of 'a' from the char
+			// add the shift to the thcar
+			if (al > 25) then  
+				// if it's now > the number of chars in the alphabet, subtract 25
+			endif;
+			// normalize the number back to a lowercase letter by add(....)
+			mov (al, c) ; //copy the letter back to the variable it came from
+		endif ;
+
+		stdout.putc(c) ;  // whether you've changed it or not, print it.
+		stdin.flushInput() ;	 //
+		read another character
+		//if nothing read, it contains zero
+		cmp (eax, 0) ;  // cmp == sets z flag
+		if (@z) then 
+			raise (ex.EndOfFile) ;  // kinda nice, civilized way to terminate the loop
+		endif ;
+	endfor ;
+
+	exception (ex.EndOfFile) ;
+		stdin.eoln() ;
+		//stdout.put("reached end of file" , nl ) ;
+		exit shift13 ;
+endtry ;
+end shift13 ;

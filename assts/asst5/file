@@ -1,0 +1,37 @@
+total 1148
+lrwxrwxrwx 1 hhaller staff      5 May 31  2016 CAESAR_SHIFT -> a.out
+-rwxr-xr-x 1 hhaller staff 984890 Mar  5  2017 CaesarShift.exe
+drwx------ 1 hhaller staff    156 Oct 13 14:06 NOTES
+-rwx------ 1 hhaller staff  12648 Feb 14 19:41 a.out
+-rw-r--r-- 1 hhaller staff   6597 Feb 24  2018 alpha_shifts.txt
+-rw-r--r-- 1 hhaller staff   1560 Feb 12 08:29 asst.txt
+lrwxrwxrwx 1 hhaller staff      5 Oct 13 12:48 asst1 -> asst1
+-rwx------ 1 hhaller staff  11967 Jul  2  2018 atoidemo
+-rw-r--r-- 1 hhaller staff    781 Jul  2  2018 atoidemo.cpp
+lrwxrwxrwx 1 hhaller staff     12 Jul  2  2018 atoidemo.cpp.txt -> atoidemo.cpp
+-rw------- 1 hhaller staff    483 Feb 14 19:41 badfor.cpp
+-rw------- 1 hhaller staff    469 Feb 14 19:51 badloop2.cpp
+-rwx------ 1 hhaller staff  10831 Jul  2  2018 block
+-rw------- 1 hhaller staff    592 Jul  2  2018 block.c
+-rwx------ 1 hhaller staff  11019 Jul  2  2018 caesar
+-rw-r--r-- 1 hhaller staff    728 Mar  5  2017 centurian.txt
+-rw-r--r-- 1 hhaller staff    508 Jul  2  2018 commandline.cpp
+lrwxrwxrwx 1 hhaller staff     15 Jul  2  2018 commandline.cpp.txt -> commandline.cpp
+-rw------- 1 root    root       0 Mar  5 17:32 file
+-rwxr--r-- 1 hhaller staff    378 Mar 13  2018 h.dat
+-rw-r--r-- 1 hhaller staff   4334 Apr 13  2017 histo.data
+-rw------- 1 hhaller staff    909 Jul  2  2018 newcaesar.cpp
+-rw------- 1 hhaller staff    605 Jul  2  2018 pseudocode
+-rw------- 1 hhaller staff     75 Oct  1 20:50 report
+-rw------- 1 hhaller staff     75 Oct  1 20:51 report.cry
+-rw-r--r-- 1 hhaller staff     93 Feb 11  2017 stage2_caesar_shift
+-rw-r--r-- 1 hhaller staff     97 Mar 12  2014 text1.clear
+-rw-r--r-- 1 hhaller staff     82 Mar 12  2014 text1.cry
+-rw-r--r-- 1 hhaller staff     91 Mar 24  2014 text2.clear
+-rw-r--r-- 1 hhaller staff     82 Oct  2  2014 text2.cry
+-rwxr--r-- 1 hhaller staff    572 Apr 20  2017 varfield.cpp
+-rwxr--r-- 1 hhaller staff  11143 Feb 23  2017 waterpump
+-rw------- 1 hhaller staff    144 Jul  2  2018 waterpump.c
+-rw-r--r-- 1 hhaller staff    237 Jul  2  2018 waterpump.cpp
+lrwxrwxrwx 1 hhaller staff     13 Jul  2  2018 waterpump.cpp.txt -> waterpump.cpp
+-rw-r--r-- 1 hhaller staff    599 Sep 23  2015 x.cry

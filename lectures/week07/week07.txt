@@ -1,0 +1,43 @@
+Pointers are great, and are absolute necessities in
+non-object, non-overloadable C.  They're less important
+in C++, if you're content to sort of knowing what you're doing,
+but not being an expert.  But some day you'll be called on to
+use Assembly Languge, and if you're not expert with pointers by 
+then, you soon will be.
+
+The first time pointers surface and put a torpedo across
+your bow is generally when you have to use arrays of char.
+They were what we had before C++ gave us strings.
+
+We will study arrays, array addressing, and pointer alternatives
+more closely in the Caesar Block Cipher.
+
+When you decide to write Conway's Life Game, you will have
+real mastery of two dimensional arrays.
+
+
+In the bb.cpp example I have presented 
+C Standard Library Formatted and
+C Standard Library Unformatted (Binary)
+
+C Standard Library
+
+FILE * = fopen(const char *, const char *) ;
+fclose(FILE *) ;
+fseek() 
+
+Formatted:
+
+fscanf (FILE *, const char *, ...) ;
+fprintf(FILE *, const char *, ...) ;
+fgetc()
+fputc()
+fgets()
+fputs() 
+
+Binary:
+
+fwrite(void * , int size, int count, FILE *) ;
+fread (void * , int size, int count, FILE *) ;
+
+

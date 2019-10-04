@@ -1,0 +1,62 @@
+using_ftp:
+TRANSFERRING FILES TO AND FROM A SERVER USING FTP, (PSFTP.EXE)
+PSCP.EXE OR SCP (scp).
+
+You will use one or another FTP (file transfer protocol)
+program intensively your whole working life.
+
+If you are using a Windows PC:
+When you are ready to upload the program file to the Mesa
+system, you can use the "psftp.exe" program on the class
+web page to get files from the local system to Mesa:
+
+Be sure you've put the USB drive in the USB port,
+
+From Firefox, navigate to the class
+web page at http://209.129.16.61/~hhaller/data/cisc192
+
+double-click psftp.exe
+
+a command-window will pop up, type:
+
+	open 209.129.16.61 
+
+when prompted "login:" enter your assigned login name, when prompted
+"passwd:" enter your password
+
+YOUR PASSWORD WILL NOT ECHO TO THE SCREEN FOR REASONS WHICH SHOULD
+BE OBVIOUS.
+
+if you're uploading assignment 0, you would change directory (cd) to
+the asst1 subdir so:
+
+	cd asst0
+
+then, type 
+
+	put e:\yourfilename.cpp
+
+(e: may be wrong, you must know which disk letter your thumbdrive or
+floppy is, what subdirectory holds your file, and use that.)
+
+wait until the transfer is complete, then type: quit
+
+(To reverse the process and copy the file to your computer, after you
+create an ftp connection as described above, type
+
+	lcd e:\    
+
+(that's Local Change Directory)
+
+	get yourfilename.cpp
+
+and your file will be downloaded from the mainframe and
+saved on your A: drive.
+
+If you're on a system with a Unix command line, you may
+copy files to or from your directory on the distance system:
+
+scp myacct@distant.com:filewanted .
+or:
+scp ./filetosend myacct@distant.com:
+

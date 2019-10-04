@@ -1,0 +1,82 @@
+We use binary when we need to see what the computer's really doing.
+We can count in Base 2 just as we do in Base 10, we just have fewer numerals:
+BINARY      DECIMAL HEXIDECIMAL
+       0        0       0
+       1        1       1
+      10        2       2
+      11        3       3
+      100       4       4
+      101       5       5
+      110       6       6
+      111       7       7
+      1000      8       8
+      1001      9       9
+      1010     10       A
+      1011     11       B
+      1100     12       C
+      1101     13       D
+      1110     14       E
+      1111     15       F
+      10000    16      10
+The REASON WE USE HEX (BASE 16) IS BECAUSE IT MAPS NEATLY 4-TO-1:
+four Binary bits to One Hexadecimal digit, so we never need to
+translate more than 4 bits at a time, and the table above is all
+the patterns of bits we ever need to remember.
+
+
+Thinking in bytes is quite large enough.
+
+
+1
+2631
+84268421
+00001101 char x is: one 8, one 4, no 2, one 1
+
+How do we test if the 8 bit in x is set?
+
+if (x & 8)   inside resolves to:
+
+00001101
+00001000 &
+
+Since two 1's match, the result is NONZERO, and the
+if evaluates to true.
+
+So how do we set the 64 bit without changing anything else?
+
+x |= 64.  (x equals x or 64).
+
+01000000
+00001101 |
+
+since 0 or 1 equals 1, we get:
+01001101  or 77
+
+You can go on forever with binary, but learning HEX saves a lot of
+bother:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+A
+B
+C
+D
+E
+F
+10
+
+
+
+1
+2631
+84268421
+00001101 char x is: one 8, one 4, no 2, one 1
+
+   0   D

@@ -1,0 +1,63 @@
+Assignment 1: Caesar Shift Cipher:
+
+50 points.
+
+Read in a STREAM of text, a character at a time, (not just a line,
+but a stream of arbitrary length, until you encounter EOF  [cin.eof()
+== true]).  And as you do so, shift each >>>letter<<<
+forward in the alphabet a certain number of places.  The number of places
+is read from the command line in argv[1], and turned into an int with:
+int shift = atoi(argv[1]) ;
+
+You should build on the waterpump.cpp program which was provided to you.
+
+READ THE COMMAND LINE FOR AN INTEGER IN ARGV[1]
+int shift = atoi( argc[1]) ;
+
+Example:
+
+shift 13
+Hello, Jack
+Uryyb, Wnpx
+
+
+Run it through atoi() to convert the command line string to an integer:
+
+int shift = atoi(argv[1]) ;
+
+
+Remember that if you shift a letter off the end of the alphabet, we must 
+"wrap around" so we come back in down by 'a'.
+
+Here's the pseudocode:
+
+read in a character c
+
+if (c is a letter )
+{
+	make c lowercase
+
+	make c a number between 0 and 25
+
+	add the shift value to c
+
+	mod c so it's between 0 and 25 again
+
+	add a 'a' to c so it's a real ASCII letter again.
+}
+print c on the output  // this happens for ALL input, not just letters!
+
+FOR UNIX HACKERS: Here's a shellscript which will run caesarshift
+against an unknown file to see if it's a Caesar shift document:
+
+#!//bin/sh
+for i in `count2  25`
+do
+        echo -n $i
+        echo -n " "
+        cat $1 | /usr/local/bin/caesar $i
+done
+
+(I didn't think it needed saying, but the loop above is not part of a C++ program, it's a bash shell script
+which executes the a.out compiled from your c++ code.)
+
